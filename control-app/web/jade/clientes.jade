@@ -1,0 +1,55 @@
+extend layout.jade
+block vida
+    .sela
+        .tab
+            table
+                caption.h-form
+                    h2 Clientes
+                    div
+                        +icon-link("clientes", "pencil", "")
+                        +icon-link("clientes", "bin", "")
+                thead.h-form
+                    tr
+                        th ID
+                        th Nome
+                        th Telefone
+                        th Endereço
+                        th Cidade
+                tbody
+                - var i = 5
+                -for(var x = 1; x < i; x++)
+                    tr
+                        td=i-x
+                        td Fulano das Neves
+                        td:= "9"+x+"8"+x+" - "+x+"3"+x+"4"
+                        td:= "QNO" + x + " conjuto i casa "+x*2+"A"
+                        td Ceilandeia-Sul
+                        td: +icon-link("clientes", "pencil", "")
+                        td: +icon-link("clientes", "user-minus", "")
+        .form-conj
+            .wrap
+                form(action="clientes.html" class="formulario" name="form_cad_cli")
+                    h2.h-form Novo Cliente
+                    div
+                        +inp-txt("text", "nome", "Nome")
+                        +inp-txt("tel", "telefone", "Telefone")
+                        +inp-txt("text", "endereco", "Endereço")
+                        div(class="input-group radio")
+                            h3.h-form Cidade / Bairro
+                            +inp-rad("cidade", "ceilandeia-sul", "Ceilandeia-Sul")
+                            +inp-rad("cidade", "taguatinga", "Taguatinga")
+                            +inp-rad("cidade", "ceilandeia-norte", "Ceilandeia-Norte")
+                        .left
+                            button
+                                +icon("user-plus", "Adicionar")
+            .wrap
+                form(action="clientes.html" class="formulario" name="form_pesq_cli")
+                    h2.h-form Pesquisar Clientes
+                    div
+                        +inp-txt("tel", "telefonep", "Telefone")
+                    .left
+                        button
+                            +icon("search", "Pesquisar")
+block casa
+block js
+    script(src="js/cliente.js")

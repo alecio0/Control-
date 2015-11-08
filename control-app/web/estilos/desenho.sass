@@ -1,0 +1,37 @@
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: roboto-r
+// main
+main
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+// header
+header
+    background: $med-alt
+    display: flex
+    flex-direction: column
+
+// content
+content
+    background: $bai
+    flex-grow: 1
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    section
+        flex-grow: 1
+    aside
+        // colocar min-width quando nescessario
+        box-shadow: 4px 0px 6px hsla(0, 0%, 0%, 0.5) inset
+
+// footer
+footer
+    background: $med-alt
+    display: flex
+    flex-direction: row
+    justify-content: space-between

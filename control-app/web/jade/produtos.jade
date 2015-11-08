@@ -1,0 +1,35 @@
+extend layout.jade
+block vida
+    .sela
+        .tab
+            -for(var x = 0; x < 2; x++)
+                +tab-prd(4)
+        .form-conj
+            .wrap
+                form(action="produtos.html" class="formulario" name="form_cad_pro" method="get")
+                    h2.h-form Novo Produto
+                    div
+                        +inp-txt("text", "nome", "Nome")
+                        +inp-txt("text", "compra", "Custo")
+                        +inp-txt("text", "venda", "Venda")
+                        div(class="input-group radio")
+                            input#atendente(type="radio", name="tipo" value="Pizzas")
+                            label(for="atendente")
+                                +icon("", "Pizzas")
+                            input#administrador(type="radio", name="tipo" value="Refrigerantes")
+                            label(for="administrador")
+                                +icon("", "Refrigerantes")
+                            .left
+                                button
+                                    +icon("checkmark2", "Adicionar")
+            .wrap
+                form(action="produtos.html" class="formulario" name="form_cad_tip" method="post")
+                    h2.h-form Novo Tipo
+                    div
+                        +inp-txt("text", "nome", "Nome")
+                        .left
+                            button
+                                +icon("checkmark2", "Adicionar")
+block casa
+block js
+    script(src="js/produtos.js")

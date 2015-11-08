@@ -1,0 +1,34 @@
+.logo
+    color: $med-bai
+    font-size: 50px
+.logo-mini
+    color: $med-bai
+    font-size: 25px
+.left
+    display: flex
+    justify-content: flex-end
+    margin-top: 10px
+$sombra: 0px 6px 4px -3px hsla(0, 0%, 0%, 0.5)
+
+.h-form
+    color: $bai
+
+// graficos
+
+.tab-graf
+    .bar-graf
+        width: 220px
+        meter
+            width: 100%
+            background: $med-alt
+            -webkit-appearance: none
+            -moz-appearance: none
+            border-radius: 3px
+            box-shadow: 0 5px 5px -5px #333 inset
+        meter::-webkit-meter-bar
+            background: linear-gradient( 135deg, transparent, transparent, 33%, $med 33%, $med 66%, transparent 66%)
+            background-size: 2em 1em
+            border-radius: 3px
+        meter::-webkit-meter-optimum-value
+            background: $bai
+            border-radius: 3px

@@ -1,0 +1,30 @@
+extend layout.jade
+block testa
+
+block vida
+    .sela
+        .tab
+            -for(var x = 0; x < 5; x++)
+                div(class="tab tab-graf")
+                    table
+                        caption.h-form
+                            h2 Tipos Mais Vendidos
+                        tbody
+                            tr
+                                td: a(href="#casa" class="h-form") Pizza
+                                td(class="bar-graf") 
+                                    meter(value=".1" low="4" high="8")
+                                td 10%
+                            tr
+                                td: a(href="#casa" class="h-form") Refrigerante
+                                td(class="bar-graf") 
+                                    meter(value=".7")
+                                td 70%
+                            tr
+                                td: a(href="#casa" class="h-form") Anburgs
+                                td(class="bar-graf") 
+                                    meter(value=".2")
+                                td 20%
+block casa
+
+block js

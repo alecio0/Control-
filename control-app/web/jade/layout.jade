@@ -1,0 +1,39 @@
+include padroes/mix.jade
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Control+
+        link(rel="stylesheet", href="estilos/main.css")
+        link(rel="stylesheet", href="estilos/icomoon/style.css")
+        meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+        block testa
+    body
+        
+        main
+            header
+                div
+                    h1.logo logo
+                    hgroup.user
+                        h3.user Administrador:
+                        h2.user Fulano da Silva
+                nav.menu-pri            
+                    ul
+                        +lis-menu("index", "home", "Inicio")
+                        +lis-menu("pedidos", "cart", "Pedidos")
+                        +lis-menu("clientes", "address-book", "Clientes")
+                        +lis-menu("produtos", "", "Produtos")
+                        +lis-menu("usuario", "user", "Usuario")
+                        +lis-menu("relatorio", "stats", "Relatorio")
+                        +lis-menu("empresa", "office", "Empresa")
+                    a(href="login.html")
+                        +icon("exit", "Sair")
+            content(select="")
+                section
+                    block vida
+                aside
+                    block casa
+            footer
+                h1.logo-mini Control +
+                time 10:45
+        block js

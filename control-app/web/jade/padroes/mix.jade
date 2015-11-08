@@ -1,0 +1,53 @@
+mixin icon(icone, titulo)
+    i(class="icon-"+icone)
+    !=" "+titulo
+
+mixin icon-link(href, icone, titulo)
+    a(href=href+".html" class="h-form")
+        +icon(icone, titulo)
+
+mixin lis-menu(href, icone, titulo)
+    li
+        a(href=href+".html")
+            +icon(icone, titulo)
+
+mixin tab-user()
+    tr
+        td 1
+        td Alécio Santana
+        td: +icon-link("", "user", "")
+        td: +icon-link("", "pencil", "")
+        td: +icon-link("", "user-minus", "")
+
+mixin inp-txt(tipo, nome, titulo)
+    .input-group
+        input(type=tipo, id=nome, name=nome)
+        label(for=nome class="label")=titulo
+
+mixin inp-rad(nome, id, valor)
+    input(type="radio", name=nome id=id value=valor)
+    label(for=id)=valor
+
+mixin tab-prd(i)
+        .tabela
+            table
+                caption.h-form
+                    h2 Pizzas
+                    div
+                        +icon-link("prosutos", "pencil", "")
+                        +icon-link("prosutos", "bin", "")
+                thead.h-form
+                    tr
+                        th ID
+                        th Nome
+                        th Venda
+                        th Custo
+                tbody
+                -for(var x = 0; x < i; x++)
+                    tr
+                        td=i-x
+                        td Xurisco
+                        td R$ 27,99
+                        td R$ 20,99
+                        td: +icon-link("prosutos", "pencil", "")
+                        td: +icon-link("prosutos", "bin", "")

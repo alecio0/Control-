@@ -1,0 +1,52 @@
+extend layout.jade
+block vida
+    .sela
+        .tab
+            table
+                caption.h-form
+                    h2 Usuarios
+                    div
+                        +icon-link("usuario", "pencil", "")
+                        +icon-link("usuario", "bin", "")
+                thead.h-form
+                    tr
+                        th ID
+                        th Nome
+                        th Perfil
+                tbody
+                - var i = 7
+                    tr
+                        td:=i
+                        td Alécio Santana
+                        td: +icon("user-admin", "")
+                        td: +icon-link("usuario", "pencil", "")
+                        td: +icon-link("usuario", "user-minus", "")
+                - i = --i
+                -for(var x = 0; x < i; x++)
+                    tr
+                        td=i-x
+                        td Alécio Santana
+                        td: +icon("user", "")
+                        td: +icon-link("usuario", "pencil", "")
+                        td: +icon-link("usuario", "user-minus", "")
+        .wrap
+            form(action="usuario.html" class="formulario" name="form_cad_user" method="post")
+                h2.h-form Novo Usuario
+                div
+                    +inp-txt("text", "nome", "Nome")
+                    +inp-txt("text", "login", "Login")
+                    +inp-txt("password", "senha1", "Senha")
+                    +inp-txt("password", "senha2", "Repita a Senha")
+                    div(class="input-group radio")
+                        input#atendente(type="radio", name="perfil" value="Atendente")
+                        label(for="atendente")
+                            +icon("user", "Atendente")
+                        input#administrador(type="radio", name="perfil" value="Adminstrador")
+                        label(for="administrador")
+                            +icon("user-admin", "Adminstrador")
+                        .left
+                            button
+                                +icon("user-plus", "Adicionar")
+block casa
+block js
+    script(src="js/usuario.js")
