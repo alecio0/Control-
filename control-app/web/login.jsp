@@ -12,7 +12,7 @@
         <content select="">
             <section>
                 <div class="wrap">
-                    <form action="index.html" class="formulario" name="form_login" method="post">
+                    <form action="ControleServlet" class="formulario" name="form_login" method="post">
                         <h2 class="h-form">Bem Vindo</h2>
                         <div>
                             <div class="input-group">
@@ -23,7 +23,7 @@
                                 <input type="password" id="senha" name="senha">
                                 <label class="label" for="sena">Senha...</label>
                             </div>
-
+                            <input type="hidden" name="logica" value="Login"/>
                             <div class="left">
                                 <button type="submit" name="button"><i class="icon-checkmark2"> Entrar</i></button>
                             </div>
