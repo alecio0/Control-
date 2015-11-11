@@ -4,8 +4,8 @@ package modelo;
 public class Produto {
     private int id;
     private String nome;
-    private String custo;
-    private String venda;
+    private double custo;
+    private double venda;
     
     private Tipo tipo;
 
@@ -25,19 +25,19 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getCusto() {
+    public double getCusto() {
         return custo;
     }
 
-    public void setCusto(String custo) {
+    public void setCusto(double custo) {
         this.custo = custo;
     }
 
-    public String getVenda() {
+    public double getVenda() {
         return venda;
     }
 
-    public void setVenda(String venda) {
+    public void setVenda(double venda) {
         this.venda = venda;
     }
 

@@ -11,32 +11,19 @@ import java.util.List;
 
 public class Teste {
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, ClassNotFoundException {
         
-        try {
-            Usuario u = new Usuario();
-            u.setNome("vida");
-            u.setLogin("vida");
-            u.setSenha("vida");
-            u.setPerfil("vida");
-
-            UsuarioDAO dao = new UsuarioDAO();
-            dao.addUser(u);
-        } catch (Exception e) {
-            System.out.println("nao deu: " + e);
-        }
+        Produto p = new Produto();
+            p.setNome("nome");
+            p.setCusto(10);
+            p.setVenda(11);
+                Tipo t =  new Tipo();
+                t.setId(9);
+            p.setTipo(t);
         
-        
-        
-//        try {
-//            UsuarioDAO dao = new UsuarioDAO();
-//            List<Usuario> us = dao.listarUsuario();
-//            for(Usuario u : us){
-//                System.out.println(u.getNome());
-//            }
-//        } catch (Exception e) {
-//        }
-        
+        ProdutoDAO dao = new ProdutoDAO();
+            dao.addProduto(p);
+            dao.desconectar();
         
         
         

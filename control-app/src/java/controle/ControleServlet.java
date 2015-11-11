@@ -25,7 +25,7 @@ public class ControleServlet extends HttpServlet {
                 String pagina = logica.executa(request, response);
                 response.sendRedirect(pagina);
             } catch (Exception e) {
-                out.println("Erro: " + e);
+                out.println("Erro bem aqui: " + e);
                 throw new ServletException("A lógica de negócios causou uma exceção", e);
             }
         }

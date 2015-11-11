@@ -47,27 +47,26 @@
         <%  try {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Usuario u  = dao.leUmUsuario(id);
-                dao.desconectar();
-        %>
+                dao.desconectar();   %>
             <div class="wrap">
                 <form action="ControleServlet" name="form_cad_user" method="get" class="formulario">
                     <h2 class="h-form">Alterar Usuario</h2>
                     <div>
                         <div class="input-group">
                             <input type="text" id="nome" name="nome" value="<%=u.getNome()%>"/>
-                            <label for="nome" class="label">Nome</label>
+                            <label for="nome" class="label active">Nome</label>
                         </div>
                         <div class="input-group">
                             <input type="text" id="login" name="login" value="<%=u.getLogin()%>"/>
-                            <label for="login" class="label">Login</label>
+                            <label for="login" class="label active">Login</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha1" name="senha1" value="<%=u.getSenha()%>"/>
-                            <label for="senha1" class="label">Senha</label>
+                            <label for="senha1" class="label active">Senha</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha2" name="senha2" value="<%=u.getSenha()%>"/>
-                            <label for="senha2" class="label">Repita a Senha</label>
+                            <label for="senha2" class="label active">Repita a Senha</label>
                         </div>
                         <div class="input-group radio">
                             
@@ -81,12 +80,12 @@
                             <input type="hidden" name="id" value="<%=id%>"/>
                         </div>
                         <div class="left">
-                            <button><i class="icon-user-plus"></i> Alterar</button>
+                            <button><i class="icon-pencil"></i> Alterar</button>
                         </div>
                     </div>
                 </form>
             </div>    
-            <%  } catch(Exception e) {  %>
+        <%  } catch(Exception e) {  %>
             <div class="wrap">
                 <form action="ControleServlet" name="form_cad_user" method="get" class="formulario">
                     <h2 class="h-form">Adcionar Usuario</h2>

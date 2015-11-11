@@ -1,7 +1,7 @@
 
 package modelo;
 
-class Tipo {
+public class Tipo {
     private int id;
     private String nome;
 

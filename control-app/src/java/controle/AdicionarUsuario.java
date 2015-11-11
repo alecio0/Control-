@@ -10,6 +10,7 @@ public class AdicionarUsuario implements Logica {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
         Usuario u = new Usuario();
             u.setNome(request.getParameter("nome"));
             u.setLogin(request.getParameter("login"));
@@ -19,7 +20,9 @@ public class AdicionarUsuario implements Logica {
         UsuarioDAO dao = new UsuarioDAO();
             dao.addUser(u);
             dao.desconectar();
+            
         return "usuario.jsp";
+        
     }
     
 }
