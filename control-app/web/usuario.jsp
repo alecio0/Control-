@@ -88,7 +88,7 @@
         <%  } catch(Exception e) {  %>
             <div class="wrap">
                 <form action="ControleServlet" name="form_cad_user" method="get" class="formulario">
-                    <h2 class="h-form">Adcionar Usuario</h2>
+                    <h2 class="h-form">Adicionar Usuario</h2>
                     <div>
                         <div class="input-group">
                             <input type="text" id="nome" name="nome"/>

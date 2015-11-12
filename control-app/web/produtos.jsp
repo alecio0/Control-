@@ -41,7 +41,7 @@
                                 <td><%=p.getNome()%></td>
                                 <td>R$ <%=p.getCusto()%></td>
                                 <td>R$ <%=p.getVenda()%></td>
-                                <td><a href="prosutos.html<%=p.getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
+                                <td><a href="produtos.jsp?idP=<%=p.getId()%>&nomeP=<%=p.getNome()%>&custoP=<%=p.getCusto()%>&vendaP=<%=p.getVenda()%>&tipoP=<%=p.getTipo().getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
                                 <td><a href="ControleServlet?logica=ExcluirProduto&id=<%=p.getId()%>" class="h-form"><i class="icon-bin"></i> </a></td>
                             </tr>
                     <%  }   %>
@@ -52,6 +52,41 @@
             </div>
             <div class="form-conj">
                 <div class="wrap">
+                <%  try {
+                        int idP = Integer.parseInt(request.getParameter("idP"));
+                        String nomeP = request.getParameter("nomeP"); 
+                        String custoP = request.getParameter("custoP");
+                        String vendaP = request.getParameter("vendaP");
+                        int tipoP = Integer.parseInt(request.getParameter("tipoP")); %>
+                    <form action="ControleServlet" name="form_cad_pro" method="get" class="formulario">
+                        <h2 class="h-form">Alterar Produto</h2>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" id="nome" name="nome" value="<%=nomeP%>"/>
+                                <label for="nome" class="label active">Nome</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="compra" name="custo" value="<%=custoP%>"/>
+                                <label for="custo" class="label active">Custo</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="venda" name="venda" value="<%=vendaP%>"/>
+                                <label for="venda" class="label active">Venda</label>
+                            </div>
+                            <div class="input-group radio">
+                                <%  for(Tipo t : ts) {  %>
+                                <input id="<%=t.getNome()%>" type="radio" name="tipo" value="<%=t.getId()%>" <% if(t.getId() == tipoP) { out.print("checked"); } %>/>
+                                <label for="<%=t.getNome()%>"><%=t.getNome()%></label>
+                                <%  }   %>
+                            </div>
+                            <input type="hidden" name="id" value="<%=idP%>"/>
+                            <input type="hidden" name="logica" value="AlterarProduto"/>
+                                <div class="left">
+                                    <button><i class="icon-pencil"></i> Alterar</button>
+                                </div>
+                        </div>
+                    </form>
+                <%  } catch (Exception e){    %>
                     <form action="ControleServlet" name="form_cad_pro" method="get" class="formulario">
                         <h2 class="h-form">Novo Produto</h2>
                         <div>
@@ -79,6 +114,7 @@
                                 </div>
                         </div>
                     </form>
+                <%  }   %>
                 </div>
                 <div class="wrap">
                 <%  try {

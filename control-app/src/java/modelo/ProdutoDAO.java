@@ -65,6 +65,9 @@ public class ProdutoDAO extends Conexao{
                 p.setNome(rs.getString("nome"));
                 p.setCusto(rs.getDouble("custo"));
                 p.setVenda(rs.getDouble("venda"));
+                    Tipo t = new Tipo();
+                    t.setId(rs.getInt("tipos_id"));
+                p.setTipo(t);
                 
                 pros.add(p);
             }
@@ -73,6 +76,26 @@ public class ProdutoDAO extends Conexao{
 
             return pros;
             
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    //::: altera :::
+    public void alterarProduto(Produto p) {
+        
+        try {
+            
+            PreparedStatement ps = this.conn.prepareStatement("update produtos set nome=?, custo=?, venda=?, tipos_id=? where id=?");
+            ps.setString(1, p.getNome());
+            ps.setDouble(2, p.getCusto());
+            ps.setDouble(3, p.getVenda());
+            ps.setInt(4, p.getTipo().getId());
+            ps.setInt(5, p.getId());
+            
+            ps.execute();
+            ps.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
