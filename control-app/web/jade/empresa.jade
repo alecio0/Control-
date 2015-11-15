@@ -1,0 +1,45 @@
+extend layout.jade
+block vida
+    .sela
+        .tab
+            .tabela
+                table
+                    caption.h-form
+                        h2 Cidade
+                        div
+                            +icon-link("prosutos", "bin", "")
+                    thead.h-form
+                        tr
+                            th Nome
+                            th Tacxa
+                    tbody
+                    -for(var x = 0; x < 3; x++)
+                        tr
+                            td Ceilandia
+                            td R$ 5.70
+                            td: +icon-link("prosutos", "pencil", "")
+                            td: +icon-link("prosutos", "bin", "")
+        .form-conj
+            .wrap
+                form(action="produtos.html" class="formulario" name="form_emp" method="get")
+                    h2.h-form Dados da Empresa
+                    div
+                        +inp-txt("text", "nome", "Nome")
+                        +inp-txt("text", "endereco", "Endereco")
+                        +inp-txt("tel", "telefone", "Telefone")
+                        +inp-txt("email", "email", "Email")
+                        .left
+                            button
+                                +icon("checkmark2", "Adicionar")
+            .wrap
+                form(action="produtos.html" class="formulario" name="form_cid" method="post")
+                    h2.h-form Adicionar Cidade
+                    div
+                        +inp-txt("text", "nome", "Nome")
+                        +inp-txt("text", "taxa", "Taxa")
+                        .left
+                            button
+                                +icon("checkmark2", "Adicionar")
+block casa
+block js
+    script(src="js/empresa.js")

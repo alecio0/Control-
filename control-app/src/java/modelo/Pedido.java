@@ -12,6 +12,7 @@ public class Pedido {
     private Cliente cliente;
     private Usuario usuario;
     private Produto produto;
+    private Empresa empresa;
 
     public int getId() {
         return id;
@@ -67,5 +68,13 @@ public class Pedido {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }

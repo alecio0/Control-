@@ -13,18 +13,14 @@ public class Teste {
     
     public static void main(String[] args) throws ParseException, ClassNotFoundException {
         
-        Produto p = new Produto();
-            p.setNome("nome");
-            p.setCusto(10);
-            p.setVenda(11);
-                Tipo t =  new Tipo();
-                t.setId(9);
-            p.setTipo(t);
+//        Empresa e = new Empresa();
+//            e.setNome("Pizzaria Egipt");
+//            e.setEndereco("QNO 4 conjunto M lote 32");
+//            e.setTelefone("3332 - 5492");
+//            e.setEmail("pizzariaegipt@emal.com");
         
-        ProdutoDAO dao = new ProdutoDAO();
-            dao.addProduto(p);
-            dao.desconectar();
-        
+        EmpresaDAO dao = new EmpresaDAO();
+            dao.getEmpresa();
         
         
         

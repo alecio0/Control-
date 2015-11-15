@@ -1,4 +1,5 @@
 <%@include file="header.jsp" %>
+<%  if(perfilUser.equals("Atendente")){ response.sendRedirect("index.jsp"); } %>
       <content select="">
         <section>
           <div class="sela">

@@ -3,13 +3,13 @@
 <%@page import="modelo.Usuario"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="header.jsp" %>
+<%  if(perfilUser.equals("Atendente")){ response.sendRedirect("index.jsp"); } %>
 <content select="">
     <section>
         <div class="sela">
             <%  UsuarioDAO dao = new UsuarioDAO();
                 List<Usuario> us = dao.listarUsuario();
-                if (us.size() == 0){
-                } else {
+                if (us.size() > 0){
             %>
             <div class="tab">
                 <table>

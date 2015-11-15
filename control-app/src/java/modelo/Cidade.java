@@ -1,10 +1,10 @@
 
 package modelo;
 
-class Cidade {
+public class Cidade {
     private int id;
     private String nome;
-    private double tacha;
+    private double taxa;
 
     public int getId() {
         return id;
@@ -22,11 +22,11 @@ class Cidade {
         this.nome = nome;
     }
 
-    public double getTacha() {
-        return tacha;
+    public double getTaxa() {
+        return taxa;
     }
 
-    public void setTacha(double tacha) {
-        this.tacha = tacha;
+    public void setTaxa(double taxa) {
+        this.taxa = taxa;
     }
 }

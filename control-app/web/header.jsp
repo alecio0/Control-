@@ -1,17 +1,30 @@
+<%@page import="modelo.Empresa"%>
+<%@page import="modelo.EmpresaDAO"%>
 <%@page import="modelo.Usuario"%>
 <%
-    int idUser;
-    String perfilUser;
+    int idUser = 0;
+    String perfilUser = "";
+    
+    String nomeEmp = "";
+    String enderecoEmp = "";
+    String telefoneEmp = "";
+    String emailEmp = "";
     try{
         Usuario user = (Usuario)session.getAttribute("user");
             idUser = user.getId();
-            perfilUser = user.getPerfil();   %>
+            perfilUser = user.getPerfil();
+        
+        Empresa emp = (Empresa)session.getAttribute("emp");
+            nomeEmp = emp.getNome();
+            enderecoEmp = emp.getEndereco();
+            telefoneEmp = emp.getTelefone();
+            emailEmp = emp.getEmail();  %>
                    
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-    <title>Control+</title>
+    <title><%=nomeEmp%></title>
     <link rel="stylesheet" href="estilos/main.css"/>
     <link rel="stylesheet" href="estilos/icomoon/style.css"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
@@ -20,7 +33,7 @@
     <main>
       <header>
         <div>
-          <h1 class="logo">logo</h1>
+          <h1 class="logo"><%=nomeEmp%></h1>
           <hgroup class="user">
             <h3 class="user"><%=user.getPerfil()%>:</h3>
             <h2 class="user"><%=user.getNome()%></h2>
