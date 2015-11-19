@@ -36,6 +36,32 @@ public class CidadeDAO extends Conexao {
         try {
             
             List<Cidade> cs = new ArrayList<Cidade>();
+            PreparedStatement ps = this.conn.prepareStatement("select * from cidades where id!=1");
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Cidade c = new Cidade();
+                c.setId(rs.getInt("id"));
+                c.setNome(rs.getString("nome"));
+                c.setTaxa(rs.getDouble("taxa"));
+                
+                cs.add(c);
+            }
+            rs.close();
+            ps.close();
+
+            return cs;
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    //::: lista :::
+    public List<Cidade> getCidade(){
+        try {
+            
+            List<Cidade> cs = new ArrayList<Cidade>();
             PreparedStatement ps = this.conn.prepareStatement("select * from cidades");
             ResultSet rs = ps.executeQuery();
             
@@ -124,7 +150,7 @@ public class CidadeDAO extends Conexao {
         
         try {
             
-            PreparedStatement ps = this.conn.prepareStatement("delete from cidades");
+            PreparedStatement ps = this.conn.prepareStatement("delete from cidades where id!=1");
             
             ps.execute();
             ps.close();

@@ -14,7 +14,7 @@
                     <table>
                         <caption class="h-form">
                             <h2>Cidade</h2>
-                            <div><a href="ControleServlet?logica=ExcluirCidades" class="h-form"><i class="icon-bin"></i> </a>
+                            <div><a href="ControleServlet?logica=ExcluirCidades" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                             </div>
                         </caption>
                         <thead class="h-form">
@@ -30,7 +30,7 @@
                                 <td>R$ <%=c.getTaxa()%></td>
                                 <td><a href="empresa.jsp?idC=<%=c.getId()%>&nomeC=<%=c.getNome()%>&taxaC=<%=c.getTaxa()%>" class="h-form"><i class="icon-pencil"></i> </a>
                                 </td>
-                                <td><a href="ControleServlet?logica=ExcluirCidade&id=<%=c.getId()%>" class="h-form"><i class="icon-bin"></i> </a>
+                                <td><a href="ControleServlet?logica=ExcluirCidade&id=<%=c.getId()%>" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                                 </td>
                             </tr>
                             <%  }   %>
@@ -49,6 +49,10 @@
                                 <label for="nome" class="label active">Nome</label>
                             </div>
                             <div class="input-group">
+                                <input type="text" id="cnpj" name="cnpj" value="<%=cnpjEmp%>"/>
+                                <label for="cnpj" class="label active">CNPJ</label>
+                            </div>
+                            <div class="input-group">
                                 <input type="text" id="endereco" name="endereco" value="<%=enderecoEmp%>"/>
                                 <label for="endereco" class="label active">Endereco</label>
                             </div>
@@ -60,10 +64,13 @@
                                 <input type="email" id="email" name="email" value="<%=emailEmp%>"/>
                                 <label for="email" class="label active">Email</label>
                             </div>
+                            <div class="input-group">
+                                <input type="text" id="nome" name="mensagem" value="<%=mensagemEmp%>"/>
+                                <label for="mensagem" class="label active">Mensagem</label>
+                            </div>
                             <input type="hidden" name="logica" value="AlterarEmpresa"/>
                             <div class="left">
-                                <button><i class="icon-pencil"></i> Alterar
-                                </button>
+                                <button onclick="return checa()"><i class="icon-pencil"></i> Alterar</button>
                             </div>
                         </div>
                     </form>
@@ -106,8 +113,7 @@
                             </div>
                             <input type="hidden" name="logica" value="AdicionarCidade"/>
                             <div class="left">
-                                <button><i class="icon-checkmark2"></i> Adicionar
-                                </button>
+                                <button><i class="icon-checkmark2"></i> Adicionar</button>
                             </div>
                         </div>
                     </form>      
@@ -121,7 +127,7 @@
 </content>
 <footer>
     <h1 class="logo-mini">Control +</h1>
-    <time>10:45</time>
+    <time></time>
 </footer>
 </main>
 <script src="js/empresa.js"></script>

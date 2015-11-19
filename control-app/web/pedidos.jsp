@@ -1,172 +1,145 @@
+<%@page import="modelo.Carrinho"%>
+<%@page import="modelo.CarrinhoDAO"%>
+<%@page import="modelo.Cliente"%>
+<%@page import="modelo.Produto"%>
+<%@page import="modelo.ProdutoDAO"%>
+<%@page import="modelo.TipoDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="modelo.Tipo"%>
 <%@include file="header.jsp" %>
-      <content select="">
-        <section>
-          <div class="sela">
+<content select="">
+    <section>
+        <div class="sela">
             <div class="tab">
-              <div class="tabela">
-                <table>
-                  <caption class="h-form">
-                    <h2>Pizzas</h2>
-                    <div><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </div>
-                  </caption>
-                  <thead class="h-form">
-                    <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Venda</th>
-                      <th>Custo</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                  <tr>
-                    <td>4</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="tabela">
-                <table>
-                  <caption class="h-form">
-                    <h2>Pizzas</h2>
-                    <div><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </div>
-                  </caption>
-                  <thead class="h-form">
-                    <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Venda</th>
-                      <th>Custo</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                  <tr>
-                    <td>4</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Xurisco</td>
-                    <td>R$ 27,99</td>
-                    <td>R$ 20,99</td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-pencil"></i> </a>
-                    </td>
-                    <td><a href="prosutos.html" class="h-form"><i class="icon-bin"></i> </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+                <%  TipoDAO daot = new TipoDAO();
+                    List<Tipo> ts = daot.listarTipo();
+                    for (Tipo t : ts) {
+                %>
+                <div class="tabela">
+                    <table>
+                        <caption class="h-form">
+                            <h2><%=t.getNome()%></h2>
+                            <div>
+
+                            </div>
+                        </caption>
+                        <%  ProdutoDAO daop = new ProdutoDAO();
+                            List<Produto> ps = daop.listarProdutoTipo(t.getId());
+                            if (ps.size() > 0) {%>
+                        <thead class="h-form">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Venda</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%  }
+                                for (Produto p : ps) {%>
+                            <tr>
+                                <td><%=p.getId()%></td>
+                                <td><%=p.getNome()%></td>
+                                <td>R$ <%=p.getVenda()%></td>
+                                <td><a href="ControleServlet?logica=AdicionarProCart&idPro=<%=p.getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
+                            </tr>
+                            <%  }   %>
+                        </tbody>
+                    </table>
+                </div>
+                <%  }%>
             </div>
-          </div>
-        </section>
-        <aside>
-          <div class="lis-ped">
-            <ul>
-              <li>Xurisco de calabresa da mamae e da mae juana
-                <div>
-                  <smal>R$25,50</smal><a href="pedidos.html" class="h-form"><i class="icon-bin"></i> </a>
+        </div>
+    </section>
+    <aside>
+        <div class="lis-ped">
+    <%  
+            if(session.getAttribute("cli") != null){
+            Cliente c = (Cliente)session.getAttribute("cli");
+    %>
+            <div class="tab">
+                <div class="tabela">
+                    <table>
+                        <caption class="h-form">
+                            <h2><%=c.getNome()%></h2>
+                            <div>
+                                <span>id: <%=c.getId()%></span>
+                            </div>
+                        </caption>
+                        <thead class="h-form">
+                            <tr>
+                                <th>Descricao</th>
+                                <th>P. Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    <%  CarrinhoDAO daocar = new CarrinhoDAO();
+                        List<Carrinho> carts = daocar.listarProCart(c);
+                        daocar.desconectar();
+                        double total = 0;
+                        for(Carrinho cart : carts) {
+                    %>
+                            <tr>
+                                <td><%=cart.getProduto().getNome()%></td>
+                                <td><%=cart.getProduto().getVenda()%></td>
+                                <td><a href="ControleServlet?logica=RemoverProCart&id=<%=cart.getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
+                            </tr>
+                            <% total = cart.getProduto().getVenda() + total; %>
+                    <%  }   %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="">
+                                    Valor Taxa Entrega:
+                                </td>
+                                <td colspan="">
+                                    <%=c.getCidade().getTaxa()%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="">
+                                    Valor Total:
+                                </td>
+                                <td colspan="">
+                                    <%=total+c.getCidade().getTaxa()%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <a href="ControleServlet?logica=CancelarPedido" class="btn cancel"><i class="icon-checkmark2"></i> cancelar</a>
+                                    <a href="ControleServlet?logica=FinalizarPedido&valor=<%=total+c.getCidade().getTaxa()%>" class="btn"><i class="icon-checkmark2"></i> Emitir</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
-              </li>
-              <li>Xurisco de calabresa da mamae e da mae juana
-                <div>
-                  <smal>R$25,50</smal><a href="pedidos.html" class="h-form"><i class="icon-bin"></i> </a>
-                </div>
-              </li>
-              <li>Xurisco de calabresa da mamae e da mae juana
-                <div>
-                  <smal>R$25,50</smal><a href="pedidos.html" class="h-form"><i class="icon-bin"></i> </a>
-                </div>
-              </li>
-              <li>Xurisco de calabresa da mamae e da mae juana
-                <div>
-                  <smal>R$25,50</smal><a href="pedidos.html" class="h-form"><i class="icon-bin"></i> </a>
-                </div>
-              </li>
-            </ul>
-            <div class="carrinho">
-              <table>
-                <tr>
-                  <td>Quantidade: 10</td>
-                  <td>Total: R$ 50,00</td>
-                </tr>
-              </table>
-              <div class="left">
-                <button class="cancel"><i class="icon-checkmark2"></i> Cancelar
-                </button>
-                <button><i class="icon-checkmark2"></i> Finalizar
-                </button>
-              </div>
             </div>
-          </div>
-        </aside>
-      </content>
-      <footer>
-        <h1 class="logo-mini">Control +</h1>
-        <time>10:45</time>
-      </footer>
-    </main>
-  </body>
+    <%  } else {   %>
+            <div class="form-conj">
+                <div class="wrap">
+                    <form action="ControleServlet" name="form_ped" method="get" class="formulario">
+                        <h2 class="h-form">Novo Cliente</h2>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" id="nome" name="nome"/>
+                                <label for="nome" class="label">Nome</label>
+                            </div>
+                            <input type="hidden" name="logica" value="AdicionarCliente">
+                            <div class="left">
+                                <button><i class="icon-checkmark2"></i> Adicionar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <%  }   %>
+        </div>
+    </aside>
+</content>
+<footer>
+    <h1 class="logo-mini">Control +</h1>
+    <time></time>
+</footer>
+</main>
+<script src="js/pedidos.js"></script>
+</body>
 </html>

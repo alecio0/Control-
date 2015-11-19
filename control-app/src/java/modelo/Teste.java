@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,19 +12,17 @@ import java.util.List;
 
 public class Teste {
     
-    public static void main(String[] args) throws ParseException, ClassNotFoundException {
+    public static void main(String[] args) throws ParseException, ClassNotFoundException, SQLException {
         
-//        Empresa e = new Empresa();
-//            e.setNome("Pizzaria Egipt");
-//            e.setEndereco("QNO 4 conjunto M lote 32");
-//            e.setTelefone("3332 - 5492");
-//            e.setEmail("pizzariaegipt@emal.com");
+        PedidoDAO dao = new PedidoDAO();
+            System.out.println(dao.getLastPedido().getValor());
+            
         
-        EmpresaDAO dao = new EmpresaDAO();
-            dao.getEmpresa();
-        
-        
-        
+//        Date hora;
+//
+//        
+//        
+//        
 //        Pedido p = new Pedido();
 //        
 //        Calendar c = Calendar.getInstance();

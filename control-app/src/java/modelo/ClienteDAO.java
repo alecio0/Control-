@@ -70,11 +70,41 @@ public class ClienteDAO extends Conexao{
     }
     
     //::: lista :::
-    public List<Cliente> listarCliente() throws ClassNotFoundException{
+    public List<Cliente> getCliente() throws ClassNotFoundException{
         try {
             
             List<Cliente> cs = new ArrayList<Cliente>();
             PreparedStatement ps = this.conn.prepareStatement("select * from clientes order by nome");
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                //criando objeto perfil
+                Cliente c = new Cliente();
+                    c.setId(rs.getInt("id"));
+                    c.setNome(rs.getString("nome"));
+                    c.setTelefone(rs.getString("telefone"));
+                    c.setEndereco(rs.getString("endereco"));
+                        CidadeDAO cit = new CidadeDAO();
+                    c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
+                    
+                cs.add(c);
+            }
+            rs.close();
+            ps.close();
+
+            return cs;
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    //::: lista :::
+    public List<Cliente> listarCliente() throws ClassNotFoundException{
+        try {
+            
+            List<Cliente> cs = new ArrayList<Cliente>();
+            PreparedStatement ps = this.conn.prepareStatement("select * from clientes where cidades_id!=1 order by nome");
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -130,35 +160,33 @@ public class ClienteDAO extends Conexao{
         return c;  
     }
     
-    //::: ler Um :::
-    public Cliente pesqCliente(String tel) throws ClassNotFoundException {
-        
-        Cliente c = null;
-        
+    public List<Cliente> pesqCliente(String tel) throws ClassNotFoundException{
         try {
             
-            PreparedStatement ps = conn.prepareStatement("select * from clientes where telefone = ?");
-                ps.setString(1, tel);
-                ResultSet rs = ps.executeQuery();
+            List<Cliente> cs = new ArrayList<Cliente>();
+            PreparedStatement ps = this.conn.prepareStatement("select * from clientes where telefone=? and cidades_id!=1 order by nome");
+            ps.setString(1, tel);
+            ResultSet rs = ps.executeQuery();
             
-            if (rs.next()) {
-                c = new Cliente();
-                c.setId(rs.getInt("id"));
-                c.setNome(rs.getString("nome"));
-                c.setTelefone(rs.getString("telefone"));
-                c.setEndereco(rs.getString("endereco"));
-                    CidadeDAO cit = new CidadeDAO();
-                c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
-                
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                    c.setId(rs.getInt("id"));
+                    c.setNome(rs.getString("nome"));
+                    c.setTelefone(rs.getString("telefone"));
+                    c.setEndereco(rs.getString("endereco"));
+                        CidadeDAO cit = new CidadeDAO();
+                    c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
+                    
+                cs.add(c);
             }
-            ps.close();
             rs.close();
+            ps.close();
 
+            return cs;
+            
         } catch (SQLException e) {
-            System.out.println("ERRO DE SQL: " + e.getMessage());
+            throw new RuntimeException(e);
         }
-        
-        return c;  
     }
     
     //::: ler Ultima  :::

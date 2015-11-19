@@ -16,7 +16,7 @@
                     <caption class="h-form">
                         <h2>Usuarios</h2>
                         <div>
-                            <a href="ControleServlet?logica=ExcluirTodosUsuario" class="h-form"><i class="icon-bin"></i> </a>
+                            <a href="ControleServlet?logica=ExcluirTodosUsuario" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                         </div>
                     </caption>
                     <thead class="h-form">
@@ -38,7 +38,7 @@
                                 <i class="icon-user"></i>
                             <%  }   %> </td>
                             <td><a href="usuario.jsp?id=<%=ul.getId()%>" class="h-form"><i class="icon-pencil"></i></a></td>
-                            <td><a href="ControleServlet?logica=ExcluirUsuario&id=<%=ul.getId()%>" class="h-form"><i class="icon-user-minus"></i></a></td>
+                            <td><a href="ControleServlet?logica=ExcluirUsuario&id=<%=ul.getId()%>" class="h-form" onclick="return checa()"><i class="icon-user-minus"></i></a></td>
                         </tr>
                         <%  }}   %>
                     </tbody>
@@ -129,7 +129,7 @@
 </content>
 <footer>
     <h1 class="logo-mini">Control +</h1>
-    <time>10:45</time>
+    <time></time>
 </footer>
 </main>
 <script src="js/usuario.js"></script>

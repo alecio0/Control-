@@ -162,7 +162,7 @@
       </content>
       <footer>
         <h1 class="logo-mini">Control +</h1>
-        <time>10:45</time>
+        <time></time>
       </footer>
     </main>
   </body>

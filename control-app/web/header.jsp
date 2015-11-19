@@ -6,9 +6,11 @@
     String perfilUser = "";
     
     String nomeEmp = "";
+    String cnpjEmp = "";
     String enderecoEmp = "";
     String telefoneEmp = "";
     String emailEmp = "";
+    String mensagemEmp = "";
     try{
         Usuario user = (Usuario)session.getAttribute("user");
             idUser = user.getId();
@@ -16,9 +18,11 @@
         
         Empresa emp = (Empresa)session.getAttribute("emp");
             nomeEmp = emp.getNome();
+            cnpjEmp = emp.getCnpj();
             enderecoEmp = emp.getEndereco();
             telefoneEmp = emp.getTelefone();
-            emailEmp = emp.getEmail();  %>
+            emailEmp = emp.getEmail();
+            mensagemEmp = emp.getMensagem();    %>
                    
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +32,11 @@
     <link rel="stylesheet" href="estilos/main.css"/>
     <link rel="stylesheet" href="estilos/icomoon/style.css"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <script>
+        function checa(){
+           return confirm("Você tem certeza disso?");
+        }
+    </script>
   </head>
   <body>
     <main>
@@ -52,7 +61,7 @@
             <li><a href="empresa.jsp"><i class="icon-office"></i> Empresa</a></li>
             
             <%  }   %>
-          </ul><a href="ControleServlet?logica=Logoff"><i class="icon-exit"></i> Sair</a>
+          </ul><a href="ControleServlet?logica=Logoff" onclick="return checa()"><i class="icon-exit"></i> Sair</a>
         </nav>
       </header>
             

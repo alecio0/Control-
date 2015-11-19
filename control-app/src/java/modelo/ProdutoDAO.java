@@ -100,4 +100,32 @@ public class ProdutoDAO extends Conexao{
             throw new RuntimeException(e);
         }
     }
+    
+    //::: ler Um :::
+    public Produto leUmProduto(int id_p) throws ClassNotFoundException {
+        
+        Produto p = null;
+        
+        try {
+            
+            PreparedStatement ps = conn.prepareStatement("select * from produtos where id = ?");
+                ps.setInt(1, id_p);
+                ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                p = new Produto();
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setVenda(rs.getDouble("venda"));
+                
+            }
+            ps.close();
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println("ERRO DE SQL: " + e.getMessage());
+        }
+        
+        return p;  
+    }
 }

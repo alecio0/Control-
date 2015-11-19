@@ -8,19 +8,23 @@
     <section>
         <div class="sela">
             <div class="tab">
-            <%  ClienteDAO daoCli = new ClienteDAO();
-                List<Cliente> clis = daoCli.listarCliente();
+        <%  try{
+                int x = Integer.parseInt(request.getParameter("x"));
+                String pesqTel = request.getParameter("pesqTel");
+                ClienteDAO daoCliP = new ClienteDAO();
+                List<Cliente> clis = daoCliP.pesqCliente(pesqTel);
                 if(clis.size() > 0){%>
                 <table>
                     <caption class="h-form">
                         <h2>Clientes</h2>
                         <div>
-                            <a href="ControleServlet?logica=ExcluirTodosCliente" class="h-form"><i class="icon-bin"></i> </a>
+                            <span><%=clis.size()%></span>
+                            <a href="ControleServlet?logica=ExcluirTodosCliente" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                         </div>
                     </caption>
                     <thead class="h-form">
                         <tr>
-                            <th>ID</th>
+                            <th></th>
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Endereço</th>
@@ -30,17 +34,54 @@
                     <tbody>
                 <%  for(Cliente cli : clis) {   %>
                     <tr id="cli<%=cli.getId()%>">
-                        <td><%=cli.getId()%></td>
+                        <td><a href="ControleServlet?logica=IniciarPedido&idCli=<%=cli.getId()%>" class="h-form" onclick="return checa()"><i class="icon-cart"></i></a></td>
                         <td><%=cli.getNome()%></td>
                         <td><%=cli.getTelefone()%></td>
                         <td><%=cli.getEndereco()%></td>
                         <td><%=cli.getCidade().getNome()%></td>
                         <td><a href="clientes.jsp?idC=<%=cli.getId()%>&nome=<%=cli.getNome()%>&telefone=<%=cli.getTelefone()%>&endereco=<%=cli.getEndereco()%>&idCit=<%=cli.getCidade().getId()%>" class="h-form"><i class="icon-pencil"></i></a></td>
-                        <td><a href="ControleServlet?logica=ExcluirCliente&id=<%=cli.getId()%>" class="h-form"><i class="icon-user-minus"></i></a></td>
+                        <td><a href="ControleServlet?logica=ExcluirCliente&id=<%=cli.getId()%>" class="h-form" onclick="return checa()"><i class="icon-user-minus"></i></a></td>
                     </tr>
                 <%  }   %>
                     </tbody>
                 </table>
+            <%  }   %>
+            <%  } catch(Exception e){ %>
+            <%  ClienteDAO daoCli = new ClienteDAO();
+                List<Cliente> clis = daoCli.listarCliente();
+                if(clis.size() > 0){%>
+                <table>
+                    <caption class="h-form">
+                        <h2>Clientes</h2>
+                        <div>
+                            <span><%=clis.size()%></span>
+                            <a href="ControleServlet?logica=ExcluirTodosCliente" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
+                        </div>
+                    </caption>
+                    <thead class="h-form">
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th>Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <%  for(Cliente cli : clis) {   %>
+                    <tr id="cli<%=cli.getId()%>">
+                        <td><a href="ControleServlet?logica=IniciarPedido&idCli=<%=cli.getId()%>" class="h-form" onclick="return checa()"><i class="icon-cart"></i></a></td>
+                        <td><%=cli.getNome()%></td>
+                        <td><%=cli.getTelefone()%></td>
+                        <td><%=cli.getEndereco()%></td>
+                        <td><%=cli.getCidade().getNome()%></td>
+                        <td><a href="clientes.jsp?idC=<%=cli.getId()%>&nome=<%=cli.getNome()%>&telefone=<%=cli.getTelefone()%>&endereco=<%=cli.getEndereco()%>&idCit=<%=cli.getCidade().getId()%>" class="h-form"><i class="icon-pencil"></i></a></td>
+                        <td><a href="ControleServlet?logica=ExcluirCliente&id=<%=cli.getId()%>" class="h-form" onclick="return checa()"><i class="icon-user-minus"></i></a></td>
+                    </tr>
+                <%  }   %>
+                    </tbody>
+                </table>
+            <%  }   %>
             <%  }   %>
             </div>
             <div class="form-conj">
@@ -116,12 +157,13 @@
                 <%  }   %>
                 </div>
                 <div class="wrap">
-                    <form action="clientes.html" name="form_pesq_cli" class="formulario">
+                    <form action="clientes.jsp" name="form_pesq_cli" class="formulario">
                         <h2 class="h-form">Pesquisar Clientes</h2>
                         <div>
                             <div class="input-group">
-                                <input type="tel" id="telefonep" name="telefonep"/>
+                                <input type="tel" id="telefonep" name="pesqTel"/>
                                 <label for="telefonep" class="label">Telefone</label>
+                                <input type="hidden" name="x" value="1"/>
                             </div>
                         </div>
                         <div class="left">
@@ -138,7 +180,7 @@
 </content>
 <footer>
     <h1 class="logo-mini">Control +</h1>
-    <time>10:45</time>
+    <time></time>
 </footer>
 </main>
 <script src="js/cliente.js"></script>

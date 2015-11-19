@@ -1,3 +1,4 @@
+@import "cores.sass"
 content
     >section
         padding: 10px
@@ -41,31 +42,40 @@ content
     >aside
         padding: 10px
         .lis-ped
-            width: 400px
-            ul
+            display: flex
+            justify-content: center
+            align-items: flex-start
+            // width: 400px
+            .tab
                 display: flex
-                flex-direction: column
-                li
-                    display: flex
-                    padding: 5px
-                    display: flex
-                    justify-content: space-between
-                    align-items: center
-                    background: $med-alt
-                    margin-bottom: 5px
-                    border-radius: 3px
-                    div
-                        display: flex
-                        flex-direction: row
-                        align-items: center
-                        a
-                            text-decoration: none
-                            margin-left: 5px
-            .carrinho
-                background: $alt
-                padding: 10px 5px
-                border-radius: 3px
+                justify-content: center
+                flex-wrap: wrap
                 table
-                    width: 100%
-                    color: $bai
-                    text-align: left
+                    display: block
+                    border-radius: 3px
+                    background: $alt
+                    box-shadow: $sombra
+                    padding: 5px
+                    caption
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        box-shadow: 0 2px $med
+                        padding: 5px
+                        margin-bottom: 5px
+                        div
+                            display: flex
+                            a
+                                margin-left: 12px
+                    td, th
+                        vertical-align: middle
+                        padding: 5px
+                    thead
+                        text-align: left
+                        vertical-align: middle
+                        padding: 5px 5px
+                    tbody, tfoot
+                        text-align: right
+                    tbody a
+                            display: block
+                            text-decoration: none

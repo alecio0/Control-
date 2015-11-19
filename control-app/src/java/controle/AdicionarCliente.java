@@ -17,15 +17,31 @@ public class AdicionarCliente implements Logica {
             c.setEndereco(request.getParameter("endereco"));
             c.setTelefone(request.getParameter("telefone"));
                 Cidade cit = new Cidade();
-                    cit.setId(Integer.parseInt(request.getParameter("cidade")));
+                    try {
+                        cit.setId(Integer.parseInt(request.getParameter("cidade")));
+                    } catch (Exception e) {
+                        cit.setId(1);
+                    }
             c.setCidade(cit);
-        
+            
         ClienteDAO dao = new ClienteDAO();
+        
+        if (c.getCidade().getId() > 1) {
+            
+                dao.addCliente(c);
+                c = dao.getLastCli();
+                dao.desconectar();
+
+            return "clientes.jsp#cli" + c.getId() ;
+            
+        } else {
+            
             dao.addCliente(c);
             c = dao.getLastCli();
-            dao.desconectar();
             
-        return "clientes.jsp#cli" + c.getId() ;
+            return "ControleServlet?logica=IniciarPedido&idCli=" + c.getId() ;
+            
+        }
         
     }
     

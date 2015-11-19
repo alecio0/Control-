@@ -244,7 +244,7 @@
   color: #ff4081;
 }
 
-input[type="submit"], button {
+input[type="submit"], .btn, button {
   background: #412c5d;
   outline: none;
   border: none;
@@ -255,17 +255,18 @@ input[type="submit"], button {
   padding: 5px 15px;
   box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
+  text-decoration: none;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-input[type="submit"]:hover, button:hover {
+input[type="submit"]:hover, .btn:hover, button:hover {
   background: #554071;
   color: #fff4ff;
 }
 
-input[type="submit"]:active, button:active {
+input[type="submit"]:active, .btn:active, button:active {
   box-shadow: 0px 3px 2px -1.5px rgba(0, 0, 0, 0.5);
   background: #412c5d;
   color: #ff4081;
@@ -273,6 +274,16 @@ input[type="submit"]:active, button:active {
 
 .cancel {
   background: #fff;
+  color: #412c5d;
+}
+
+.cancel:hover {
+  background: #fff;
+  color: #ff4081;
+}
+
+.cancel:active {
+  box-shadow: 0px 3px 2px -1.5px rgba(0, 0, 0, 0.5);
   color: #412c5d;
 }
 
@@ -431,46 +442,60 @@ content > aside {
 }
 
 content > aside .lis-ped {
-  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-content > aside .lis-ped ul {
+content > aside .lis-ped .tab {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-content > aside .lis-ped ul li {
-  display: flex;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #c8b3e4;
-  margin-bottom: 5px;
+content > aside .lis-ped .tab table {
+  display: block;
   border-radius: 3px;
-}
-
-content > aside .lis-ped ul li div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-content > aside .lis-ped ul li div a {
-  text-decoration: none;
-  margin-left: 5px;
-}
-
-content > aside .lis-ped .carrinho {
   background: #f5e0ff;
-  padding: 10px 5px;
-  border-radius: 3px;
+  box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.5);
+  padding: 5px;
 }
 
-content > aside .lis-ped .carrinho table {
-  width: 100%;
-  color: #412c5d;
+content > aside .lis-ped .tab table caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px #9b86b7;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+content > aside .lis-ped .tab table caption div {
+  display: flex;
+}
+
+content > aside .lis-ped .tab table caption div a {
+  margin-left: 12px;
+}
+
+content > aside .lis-ped .tab table td, content > aside .lis-ped .tab table th {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+content > aside .lis-ped .tab table thead {
   text-align: left;
+  vertical-align: middle;
+  padding: 5px 5px;
+}
+
+content > aside .lis-ped .tab table tbody, content > aside .lis-ped .tab table tfoot {
+  text-align: right;
+}
+
+content > aside .lis-ped .tab table tbody a {
+  display: block;
+  text-decoration: none;
 }
 
 footer {

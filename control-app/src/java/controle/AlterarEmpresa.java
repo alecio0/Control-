@@ -16,9 +16,11 @@ public class AlterarEmpresa implements Logica {
         
         Empresa e = new Empresa();
             e.setNome(request.getParameter("nome"));
+            e.setCnpj(request.getParameter("cnpj"));
             e.setEndereco(request.getParameter("endereco"));
             e.setTelefone(request.getParameter("telefone"));
             e.setEmail(request.getParameter("email"));
+            e.setMensagem(request.getParameter("mensagem"));
             
         EmpresaDAO dao = new EmpresaDAO();
             dao.alterarEmpresa(e);

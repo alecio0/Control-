@@ -99,14 +99,14 @@ public class UsuarioDAO extends Conexao {
     }
     
     //::: ler Um :::
-    public Usuario leUmUsuario(int id_p) throws ClassNotFoundException {
+    public Usuario leUmUsuario(int id_u) throws ClassNotFoundException {
         
         Usuario u = null;
         
         try {
             
             PreparedStatement ps = conn.prepareStatement("select * from usuarios where id = ?");
-                ps.setInt(1, id_p);
+                ps.setInt(1, id_u);
                 ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {

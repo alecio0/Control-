@@ -19,7 +19,7 @@
                             <h2><%=t.getNome()%></h2>
                             <div>
                                 <a href="produtos.jsp?idT=<%=t.getId()%>&nomeT=<%=t.getNome()%>" class="h-form"><i class="icon-pencil"></i> </a>
-                                <a href="ControleServlet?logica=ExcluirTipo&id=<%=t.getId()%>" class="h-form"><i class="icon-bin"></i> </a>
+                                <a href="ControleServlet?logica=ExcluirTipo&id=<%=t.getId()%>" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                             </div>
                         </caption>
                     <%  ProdutoDAO daop = new ProdutoDAO();
@@ -42,7 +42,7 @@
                                 <td>R$ <%=p.getCusto()%></td>
                                 <td>R$ <%=p.getVenda()%></td>
                                 <td><a href="produtos.jsp?idP=<%=p.getId()%>&nomeP=<%=p.getNome()%>&custoP=<%=p.getCusto()%>&vendaP=<%=p.getVenda()%>&tipoP=<%=p.getTipo().getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
-                                <td><a href="ControleServlet?logica=ExcluirProduto&id=<%=p.getId()%>" class="h-form"><i class="icon-bin"></i> </a></td>
+                                <td><a href="ControleServlet?logica=ExcluirProduto&id=<%=p.getId()%>" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a></td>
                             </tr>
                     <%  }   %>
                         </tbody>
@@ -157,7 +157,7 @@
 </content>
 <footer>
     <h1 class="logo-mini">Control +</h1>
-    <time>10:45</time>
+    <time></time>
 </footer>
 </main>
 <script src="js/produtos.js"></script>

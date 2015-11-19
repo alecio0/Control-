@@ -18,11 +18,13 @@ public class EmpresaDAO extends Conexao {
         
         try {
             
-            PreparedStatement ps = this.conn.prepareStatement("update empresa set nome=?, endereco=?, telefone=?, email=? where id=1");
+            PreparedStatement ps = this.conn.prepareStatement("update empresa set nome=?, cnpj=?, endereco=?, telefone=?, email=?, mensagem=? where id=1");
             ps.setString(1, e.getNome());
-            ps.setString(2, e.getEndereco());
-            ps.setString(3, e.getTelefone());
-            ps.setString(4, e.getEmail());
+            ps.setString(2, e.getCnpj());
+            ps.setString(3, e.getEndereco());
+            ps.setString(4, e.getTelefone());
+            ps.setString(5, e.getEmail());
+            ps.setString(6, e.getMensagem());
             
             ps.execute();
             ps.close();
@@ -46,10 +48,12 @@ public class EmpresaDAO extends Conexao {
                 
                 e = new Empresa();
                 e.setId(rs.getInt("id"));
+                e.setCnpj(rs.getString("cnpj"));
                 e.setNome(rs.getString("nome"));
                 e.setEndereco(rs.getString("endereco"));
                 e.setTelefone(rs.getString("telefone"));
                 e.setEmail(rs.getString("email"));
+                e.setMensagem(rs.getString("mensagem"));
             }
             
             ps.close();
