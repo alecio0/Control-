@@ -46,27 +46,27 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome" value="<%=nomeEmp%>"/>
-                                <label for="nome" class="label active">Nome</label>
+                                <label for="nome" class="label active"><i class="icon-office"></i> Nome da Empresa</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="cnpj" name="cnpj" value="<%=cnpjEmp%>"/>
-                                <label for="cnpj" class="label active">CNPJ</label>
+                                <label for="cnpj" class="label active"><i class="icon-file-text"></i> CNPJ</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="endereco" name="endereco" value="<%=enderecoEmp%>"/>
-                                <label for="endereco" class="label active">Endereco</label>
+                                <label for="endereco" class="label active"><i class="icon-location"></i> Endereco</label>
                             </div>
                             <div class="input-group">
                                 <input type="tel" id="telefone" name="telefone" value="<%=telefoneEmp%>"/>
-                                <label for="telefone" class="label active">Telefone</label>
+                                <label for="telefone" class="label active"><i class="icon-phone"></i> Telefone</label>
                             </div>
                             <div class="input-group">
                                 <input type="email" id="email" name="email" value="<%=emailEmp%>"/>
-                                <label for="email" class="label active">Email</label>
+                                <label for="email" class="label active"><i class="icon-envelop"></i> Email</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="mensagem" value="<%=mensagemEmp%>"/>
-                                <label for="mensagem" class="label active">Mensagem</label>
+                                <label for="mensagem" class="label active"><i class="icon-bubble2"></i> Mensagem</label>
                             </div>
                             <input type="hidden" name="logica" value="AlterarEmpresa"/>
                             <div class="left">
@@ -85,11 +85,11 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome" value="<%=nomeC%>"/>
-                                <label for="nome" class="label active">Nome</label>
+                                <label for="nome" class="label active"><i class="icon-map"></i> Nome da Cidade</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="taxa" name="taxa" value="<%=taxaC%>"/>
-                                <label for="taxa" class="label active">Taxa</label>
+                                <label for="taxa" class="label active"><i class="icon-dollar"></i> Taxa</label>
                             </div>
                             <input type="hidden" name="id" value="<%=idC%>"/>
                             <input type="hidden" name="logica" value="AlterarCidade"/>
@@ -105,11 +105,11 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome"/>
-                                <label for="nome" class="label">Nome</label>
+                                <label for="nome" class="label"><i class="icon-map"></i> Nome da Cidade</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="taxa" name="taxa"/>
-                                <label for="taxa" class="label">Taxa</label>
+                                <label for="taxa" class="label"><i class="icon-dollar"></i> Taxa</label>
                             </div>
                             <input type="hidden" name="logica" value="AdicionarCidade"/>
                             <div class="left">

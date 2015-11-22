@@ -62,7 +62,7 @@ public class CidadeDAO extends Conexao {
         try {
             
             List<Cidade> cs = new ArrayList<Cidade>();
-            PreparedStatement ps = this.conn.prepareStatement("select * from cidades");
+            PreparedStatement ps = this.conn.prepareStatement("select * from cidades order by nome");
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {

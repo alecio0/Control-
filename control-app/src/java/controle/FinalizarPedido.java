@@ -31,11 +31,20 @@ public class FinalizarPedido implements Logica {
         
         CarrinhoDAO daoCar = new CarrinhoDAO();
             List<Carrinho> cars = daoCar.listarProCart(cli);
-            for(Carrinho car: cars){
-                ped.setProduto(car.getProduto());
-                ped.setId(daoPed.getLastPedido().getId());
+            
+            if (cars.size() > 0) {
                 
-                daoPed.addProPedido(ped);
+                for (Carrinho car : cars) {
+                    ped.setProduto(car.getProduto());
+                    ped.setId(daoPed.getLastPedido().getId());
+
+                    daoPed.addProPedido(ped);
+                }
+                
+            } else {
+                
+                return "index.jsp";
+                
             }
         
         daoCar.desconectar();
@@ -43,7 +52,7 @@ public class FinalizarPedido implements Logica {
         
         session.removeAttribute("cli");
         
-        return "pedidos.jsp";
+        return "index.jsp";
         
     }
     

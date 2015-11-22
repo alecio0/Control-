@@ -22,7 +22,7 @@ public class IniciarPedido implements Logica {
             session.setAttribute("cli", c);
             dao.desconectar();
             
-        return "pedidos.jsp";
+        return "index.jsp";
         
     }
     

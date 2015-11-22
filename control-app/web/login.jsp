@@ -18,15 +18,15 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="login" name="login">
-                                <label class="label" for="login">Login...</label>
+                                <label class="label" for="login"><i class="icon-keyboard"></i> Login</label>
                             </div>
                             <div class="input-group">
                                 <input type="password" id="senha" name="senha">
-                                <label class="label" for="sena">Senha...</label>
+                                <label class="label" for="sena"><i class="icon-key"></i> Senha</label>
                             </div>
                             <input type="hidden" name="logica" value="Login"/>
                             <div class="left">
-                                <button type="submit" name="button"><i class="icon-checkmark2"> Entrar</i></button>
+                                <button type="submit" name="button"><i class="icon-enter"> Entrar</i></button>
                             </div>
                         </div>
                     </form>

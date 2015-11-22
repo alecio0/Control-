@@ -97,15 +97,15 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome" value="<%=nome%>"/>
-                                <label for="nome" class="label active">Nome</label>
+                                <label for="nome" class="label active"><i class="icon-profile"></i> Nome</label>
                             </div>
                             <div class="input-group">
                                 <input type="tel" id="telefone" name="telefone" value="<%=telefone%>"/>
-                                <label for="telefone" class="label active">Telefone</label>
+                                <label for="telefone" class="label active"><i class="icon-phone"></i> Telefone</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="endereco" name="endereco" value="<%=endereco%>"/>
-                                <label for="endereco" class="label active">Endereço</label>
+                                <label for="endereco" class="label active"><i class="icon-location"></i> Endereço</label>
                             </div>
                             <div class="input-group radio">
                                 <h3 class="h-form">Cidade / Bairro</h3>
@@ -129,15 +129,15 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome"/>
-                                <label for="nome" class="label">Nome</label>
+                                <label for="nome" class="label"><i class="icon-profile"></i> Nome</label>
                             </div>
                             <div class="input-group">
                                 <input type="tel" id="telefone" name="telefone"/>
-                                <label for="telefone" class="label">Telefone</label>
+                                <label for="telefone" class="label"><i class="icon-phone"></i> Telefone</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="endereco" name="endereco"/>
-                                <label for="endereco" class="label">Endereço</label>
+                                <label for="endereco" class="label"><i class="icon-location"></i> Endereço</label>
                             </div>
                             <div class="input-group radio">
                                 <h3 class="h-form">Cidade / Bairro</h3>
@@ -162,13 +162,12 @@
                         <div>
                             <div class="input-group">
                                 <input type="tel" id="telefonep" name="pesqTel"/>
-                                <label for="telefonep" class="label">Telefone</label>
+                                <label for="telefonep" class="label"><i class="icon-phone"></i> Telefone</label>
                                 <input type="hidden" name="x" value="1"/>
                             </div>
                         </div>
                         <div class="left">
-                            <button><i class="icon-search"></i> Pesquisar
-                            </button>
+                            <button><i class="icon-search"></i> Pesquisar</button>
                         </div>
                     </form>
                 </div>

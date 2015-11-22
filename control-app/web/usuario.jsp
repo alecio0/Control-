@@ -54,19 +54,19 @@
                     <div>
                         <div class="input-group">
                             <input type="text" id="nome" name="nome" value="<%=u.getNome()%>"/>
-                            <label for="nome" class="label active">Nome</label>
+                            <label for="nome" class="label active"><i class="icon-profile"></i> Nome</label>
                         </div>
                         <div class="input-group">
                             <input type="text" id="login" name="login" value="<%=u.getLogin()%>"/>
-                            <label for="login" class="label active">Login</label>
+                            <label for="login" class="label active"><i class="icon-keyboard"></i> Login</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha1" name="senha1" value="<%=u.getSenha()%>"/>
-                            <label for="senha1" class="label active">Senha</label>
+                            <label for="senha1" class="label active"><i class="icon-key"></i> Senha</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha2" name="senha2" value="<%=u.getSenha()%>"/>
-                            <label for="senha2" class="label active">Repita a Senha</label>
+                            <label for="senha2" class="label active"><i class="icon-key"></i> Repita a Senha</label>
                         </div>
                         <div class="input-group radio">
                             
@@ -92,27 +92,25 @@
                     <div>
                         <div class="input-group">
                             <input type="text" id="nome" name="nome"/>
-                            <label for="nome" class="label">Nome</label>
+                            <label for="nome" class="label"><i class="icon-profile"></i> Nome</label>
                         </div>
                         <div class="input-group">
                             <input type="text" id="login" name="login"/>
-                            <label for="login" class="label">Login</label>
+                            <label for="login" class="label"><i class="icon-keyboard"></i> Login</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha1" name="senha1"/>
-                            <label for="senha1" class="label">Senha</label>
+                            <label for="senha1" class="label"><i class="icon-key"></i> Senha</label>
                         </div>
                         <div class="input-group">
                             <input type="password" id="senha2" name="senha2"/>
-                            <label for="senha2" class="label">Repita a Senha</label>
+                            <label for="senha2" class="label"><i class="icon-key"></i> Repita a Senha</label>
                         </div>
                         <div class="input-group radio">
                             <input id="atendente" type="radio" name="perfil" value="Atendente"/>
-                            <label for="atendente"><i class="icon-user"></i> Atendente
-                            </label>
+                            <label for="atendente"><i class="icon-user"></i> Atendente</label>
                             <input id="administrador" type="radio" name="perfil" value="Administrador"/>
-                            <label for="administrador"><i class="icon-user-admin"></i> Adminstrador
-                            </label>
+                            <label for="administrador"><i class="icon-user-admin"></i> Adminstrador</label>
                             <input type="hidden" name="logica" value="AdicionarUsuario"/>
                         </div>
                         <div class="left">

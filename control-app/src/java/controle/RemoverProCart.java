@@ -19,7 +19,7 @@ public class RemoverProCart implements Logica {
         CarrinhoDAO dao = new CarrinhoDAO();
             dao.removerProCart(cart);
         
-        return "pedidos.jsp";
+        return "index.jsp";
         
     }
     

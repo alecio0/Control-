@@ -29,8 +29,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nome</th>
-                                <th>Custo</th>
-                                <th>Venda</th>
+                                <th>Custo Unit.</th>
+                                <th>Venda Unit.</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +39,8 @@
                             <tr>
                                 <td><%=p.getId()%></td>
                                 <td><%=p.getNome()%></td>
-                                <td>R$ <%=p.getCusto()%></td>
-                                <td>R$ <%=p.getVenda()%></td>
+                                <td><%=p.getCusto()%></td>
+                                <td><%=p.getVenda()%></td>
                                 <td><a href="produtos.jsp?idP=<%=p.getId()%>&nomeP=<%=p.getNome()%>&custoP=<%=p.getCusto()%>&vendaP=<%=p.getVenda()%>&tipoP=<%=p.getTipo().getId()%>" class="h-form"><i class="icon-pencil"></i> </a></td>
                                 <td><a href="ControleServlet?logica=ExcluirProduto&id=<%=p.getId()%>" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a></td>
                             </tr>
@@ -63,17 +63,18 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome" value="<%=nomeP%>"/>
-                                <label for="nome" class="label active">Nome</label>
+                                <label for="nome" class="label active"><i class="icon-file-text"></i> Nome</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="compra" name="custo" value="<%=custoP%>"/>
-                                <label for="custo" class="label active">Custo</label>
+                                <label for="custo" class="label active"><i class="icon-dollar"></i> P. Custo Unit.</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="venda" name="venda" value="<%=vendaP%>"/>
-                                <label for="venda" class="label active">Venda</label>
+                                <label for="venda" class="label active"><i class="icon-dollar"></i> P. Venda Unit.</label>
                             </div>
                             <div class="input-group radio">
+                                <h3 class="h-form">Tipo</h3>
                                 <%  for(Tipo t : ts) {  %>
                                 <input id="<%=t.getNome()%>" type="radio" name="tipo" value="<%=t.getId()%>" <% if(t.getId() == tipoP) { out.print("checked"); } %>/>
                                 <label for="<%=t.getNome()%>"><%=t.getNome()%></label>
@@ -92,17 +93,18 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="nome" name="nome"/>
-                                <label for="nome" class="label">Nome</label>
+                                <label for="nome" class="label"><i class="icon-file-text"></i> Nome</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="compra" name="custo"/>
-                                <label for="custo" class="label">Custo</label>
+                                <label for="custo" class="label"><i class="icon-dollar"></i> P. Custo Unit.</label>
                             </div>
                             <div class="input-group">
                                 <input type="text" id="venda" name="venda"/>
-                                <label for="venda" class="label">Venda</label>
+                                <label for="venda" class="label"><i class="icon-dollar"></i> P. Venda Unit.</label>
                             </div>
                             <div class="input-group radio">
+                                <h3 class="h-form">Tipo</h3>
                                 <%  for(Tipo t : ts) {  %>
                                 <input id="<%=t.getNome()%>" type="radio" name="tipo" value="<%=t.getId()%>"/>
                                 <label for="<%=t.getNome()%>"><%=t.getNome()%></label>
@@ -125,7 +127,7 @@
                             <div>
                                 <div class="input-group">
                                     <input type="text" id="nome" name="nome" value="<%=nomeT%>"/>
-                                    <label for="nome" class="label active">Nome</label>
+                                    <label for="nome" class="label active"><i class="icon-table2"></i> Nome</label>
                                     <input type="hidden" name="id" value="<%=idT%>"/>
                                 </div>
                                 <div class="left">
@@ -139,7 +141,7 @@
                             <div>
                                 <div class="input-group">
                                     <input type="text" id="nome" name="nome"/>
-                                    <label for="nome" class="label">Nome</label>
+                                    <label for="nome" class="label"><i class="icon-table2"></i> Nome</label>
                                 </div>
                                 <div class="left">
                                     <button><i class="icon-checkmark2"></i> Adicionar</button>

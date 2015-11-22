@@ -74,7 +74,7 @@ public class UsuarioDAO extends Conexao {
         try {
             
             List<Usuario> us = new ArrayList<Usuario>();
-            PreparedStatement ps = this.conn.prepareStatement("select * from usuarios");
+            PreparedStatement ps = this.conn.prepareStatement("select * from usuarios order by nome");
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {

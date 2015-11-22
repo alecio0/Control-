@@ -14,9 +14,23 @@ public class Teste {
     
     public static void main(String[] args) throws ParseException, ClassNotFoundException, SQLException {
         
-        PedidoDAO dao = new PedidoDAO();
-            System.out.println(dao.getLastPedido().getValor());
+        CidadeDAO daoCit = new CidadeDAO();
+        List<Cidade> cits = daoCit.getCidade();
+        
+        Pedido ped = new Pedido();
             
+        PedidoDAO dao = new PedidoDAO();
+        System.out.println(dao.listarPedido().size());
+        int total = dao.listarPedido().size();
+        
+        double c = (double) 1.5;
+        
+        System.out.println(c);
+            
+        for (Cidade cit : cits) {
+            String persent = String.format("%.2f", (dao.listarPedidoCit(cit).size() / total));
+            System.out.println(cit.getNome() + ": " + persent + " - " + dao.listarPedidoCit(cit).size());
+        }
         
 //        Date hora;
 //

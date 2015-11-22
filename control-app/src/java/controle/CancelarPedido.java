@@ -24,7 +24,7 @@ public class CancelarPedido implements Logica {
             dao.cancelarCart(cart);
             session.removeAttribute("cli");
             
-        return "pedidos.jsp";
+        return "index.jsp";
         
     }
     

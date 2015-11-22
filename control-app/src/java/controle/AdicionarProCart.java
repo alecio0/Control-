@@ -31,11 +31,11 @@ public class AdicionarProCart implements Logica{
                 dao.addProCart(cart);
                 dao.desconectar();
                 
-            return "pedidos.jsp";
+            return "index.jsp";
             
         } else {
             
-            return "pedidos.jsp";
+            return "index.jsp";
             
         }
         

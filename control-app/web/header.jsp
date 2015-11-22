@@ -50,14 +50,14 @@
         </div>
         <nav class="menu-pri">           
           <ul>
-            <li><a href="index.jsp"><i class="icon-home"></i> Inicio</a></li>
-            <li><a href="pedidos.jsp"><i class="icon-cart"></i> Pedidos</a></li>
+            <li><a href="index.jsp"><i class="icon-cart"></i> Fazer Pedidos</a></li>
+            <li><a href="pedidos.jsp"><i class="icon-list-numbered"></i> Listar Pedidos</a></li>
             <li><a href="clientes.jsp"><i class="icon-address-book"></i> Clientes</a></li>
-            <li><a href="produtos.jsp"><i class="icon-"></i> Produtos</a></li>
+            <li><a href="produtos.jsp"><i class="icon-spoon-knife"></i> Produtos</a></li>
             <%  if(user.getPerfil().equals("Administrador")){   %>
             
-            <li><a href="usuario.jsp"><i class="icon-user"></i> Usuario</a></li>
-            <li><a href="relatorio.jsp"><i class="icon-stats"></i> Relatorio</a></li>
+            <li><a href="usuario.jsp"><i class="icon-users"></i> Usuarios</a></li>
+            <li><a href="estatisticas.jsp"><i class="icon-stats"></i> Estatísticas</a></li>
             <li><a href="empresa.jsp"><i class="icon-office"></i> Empresa</a></li>
             
             <%  }   %>

@@ -2,26 +2,8 @@ extend layout.jade
 block testa
 block vida
     .sela
-        .tab
-            -for(var x = 0; x < 2; x++)
-                +tab-prd(4)
+
 block casa
     .lis-ped
-        ul
-            - for( var x = 0; x < 4; x++ )
-                li Xurisco de calabresa da mamae e da mae juana
-                    div
-                        smal R$25,50
-                        +icon-link("pedidos", "bin","")
-        .carrinho
-            table
-                tr
-                    td Quantidade: 10
-                    td Total: R$ 50,00
-            .left
-                button.cancel
-                    +icon("checkmark2", "Cancelar")
-                
-                button
-                    +icon("checkmark2", "Finalizar")
+        
 block js

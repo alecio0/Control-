@@ -439,6 +439,8 @@ content .sela .tab table a {
 
 content > aside {
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 content > aside .lis-ped {
