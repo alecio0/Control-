@@ -91,7 +91,7 @@ public class PedidoDAO extends Conexao {
         try {
             
             List<Pedido> peds = new ArrayList<Pedido>();
-            PreparedStatement ps = this.conn.prepareStatement("select * from pedidos");
+            PreparedStatement ps = this.conn.prepareStatement("select * from pedidos order by id desc");
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -122,6 +122,44 @@ public class PedidoDAO extends Conexao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    //::: ler Um :::
+    public Pedido leUmPedido(int id_prd) throws ClassNotFoundException {
+        
+        Pedido ped = null;
+        
+        try {
+            
+            PreparedStatement ps = conn.prepareStatement("select * from pedidos where id = ?");
+                ps.setInt(1, id_prd);
+                ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                ped = new Pedido();
+                ped.setId(rs.getInt("id"));
+                ped.setValor(rs.getDouble("valor"));
+                ped.setData(rs.getDate("data"));
+                ped.setHora(rs.getTime("hora"));
+                
+                    ClienteDAO daoCli = new ClienteDAO(conn);
+                ped.setCliente(daoCli.leUmCliente(rs.getInt("clientes_id")));
+                
+                    UsuarioDAO daoUser = new UsuarioDAO(conn);
+                ped.setUsuario(daoUser.leUmUsuario(rs.getInt("usuarios_id")));
+                
+                    EmpresaDAO daoEmp = new EmpresaDAO(conn);
+                ped.setEmpresa(daoEmp.getEmpresa());
+                
+            }
+            ps.close();
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println("ERRO DE SQL: " + e.getMessage());
+        }
+        
+        return ped;  
     }
     
     public List<Pedido> listarPedidoUser(Usuario user) throws ClassNotFoundException{
