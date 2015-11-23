@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class EmpresaDAO extends Conexao {
     private final Connection conn;
     
-    public EmpresaDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public EmpresaDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: altera :::

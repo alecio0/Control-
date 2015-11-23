@@ -1,8 +1,10 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexao;
 import modelo.Tipo;
 import modelo.TipoDAO;
 
@@ -14,9 +16,12 @@ public class AdicionarTipo implements Logica{
         Tipo t = new Tipo();
             t.setNome(request.getParameter("nome"));
         
-        TipoDAO dao = new TipoDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        TipoDAO dao = new TipoDAO(conn);
             dao.addTipo(t);
-            dao.desconectar();
+            
+        conn.close();
         
         return "produtos.jsp";
         

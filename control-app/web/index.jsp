@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="modelo.Carrinho"%>
 <%@page import="modelo.CarrinhoDAO"%>
 <%@page import="modelo.Cliente"%>
@@ -11,7 +13,8 @@
     <section>
         <div class="sela">
             <div class="tab">
-                <%  TipoDAO daot = new TipoDAO();
+                <%  Connection conn = new Conexao().trazConexao();
+                    TipoDAO daot = new TipoDAO(conn);
                     List<Tipo> ts = daot.listarTipo();
                     for (Tipo t : ts) {
                 %>
@@ -23,7 +26,7 @@
 
                             </div>
                         </caption>
-                        <%  ProdutoDAO daop = new ProdutoDAO();
+                        <%  ProdutoDAO daop = new ProdutoDAO(conn);
                             List<Produto> ps = daop.listarProdutoTipo(t.getId());
                             if (ps.size() > 0) {%>
                         <thead class="h-form">
@@ -72,7 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                    <%  CarrinhoDAO daocar = new CarrinhoDAO();
+                    <%  CarrinhoDAO daocar = new CarrinhoDAO(conn);
                         List<Carrinho> carts = daocar.listarProCart(c);
                         daocar.desconectar();
                         double total = 0;
@@ -131,7 +134,7 @@
                     </form>
                 </div>
             </div>
-    <%  }   %>
+    <%  }   conn.close();   %>
         </div>
     </aside>
 </content>

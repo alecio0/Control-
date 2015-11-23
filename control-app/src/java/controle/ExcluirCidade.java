@@ -1,10 +1,12 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cidade;
 import modelo.CidadeDAO;
+import modelo.Conexao;
 
 public class ExcluirCidade implements Logica{
 
@@ -14,9 +16,12 @@ public class ExcluirCidade implements Logica{
         Cidade c = new Cidade();
             c.setId(Integer.parseInt(request.getParameter("id")));
         
-        CidadeDAO dao = new CidadeDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        CidadeDAO dao = new CidadeDAO(conn);
             dao.removerCidade(c);
         
+        conn.close();
         
         return "empresa.jsp";
         

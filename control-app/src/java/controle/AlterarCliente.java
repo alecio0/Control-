@@ -1,11 +1,13 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cidade;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.Conexao;
 
 public class AlterarCliente implements Logica {
 
@@ -21,9 +23,12 @@ public class AlterarCliente implements Logica {
                 cit.setId(Integer.parseInt(request.getParameter("cidade")));
             c.setCidade(cit);
         
-        ClienteDAO dao = new ClienteDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        ClienteDAO dao = new ClienteDAO(conn);
             dao.alterarCliente(c);
-            dao.desconectar();
+            
+        conn.close();
         
         return "clientes.jsp#cli" + c.getId() ;
         

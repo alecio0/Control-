@@ -1,8 +1,10 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexao;
 import modelo.Produto;
 import modelo.ProdutoDAO;
 import modelo.Tipo;
@@ -21,9 +23,12 @@ public class AdicionarProduto implements Logica {
                     
             p.setTipo(t);
             
-        ProdutoDAO dao = new ProdutoDAO();
+        Connection conn = new Conexao().trazConexao(); 
+        
+        ProdutoDAO dao = new ProdutoDAO(conn);
             dao.addProduto(p);
-            dao.desconectar();
+            
+        conn.close();
             
         return "produtos.jsp";
     }

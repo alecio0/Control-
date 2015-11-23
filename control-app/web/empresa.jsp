@@ -1,3 +1,6 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="modelo.Cidade"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.CidadeDAO"%>
@@ -6,7 +9,8 @@
 <content select="">
     <section>
         <div class="sela">
-            <%  CidadeDAO daoC = new CidadeDAO();
+            <%  Connection conn = new Conexao().trazConexao();
+                CidadeDAO daoC = new CidadeDAO(conn);
                 List<Cidade> cs = daoC.listarCidade();
                 if (cs.size() > 0) {    %>
             <div class="tab">
@@ -94,8 +98,7 @@
                             <input type="hidden" name="id" value="<%=idC%>"/>
                             <input type="hidden" name="logica" value="AlterarCidade"/>
                             <div class="left">
-                                <button><i class="icon-pencil"></i> Alterar
-                                </button>
+                                <button><i class="icon-pencil"></i> Alterar</button>
                             </div>
                         </div>
                     </form>
@@ -117,7 +120,7 @@
                             </div>
                         </div>
                     </form>      
-            <%  }   %>
+            <%  }   conn.close();   %>
                 </div>
             </div>
         </div>

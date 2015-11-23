@@ -11,8 +11,8 @@ import java.util.List;
 public class ClienteDAO extends Conexao{
     private final Connection conn;
     
-    public ClienteDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public ClienteDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: adicionar :::
@@ -84,7 +84,7 @@ public class ClienteDAO extends Conexao{
                     c.setNome(rs.getString("nome"));
                     c.setTelefone(rs.getString("telefone"));
                     c.setEndereco(rs.getString("endereco"));
-                        CidadeDAO cit = new CidadeDAO();
+                        CidadeDAO cit = new CidadeDAO(conn);
                     c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
                     
                 cs.add(c);
@@ -114,7 +114,7 @@ public class ClienteDAO extends Conexao{
                     c.setNome(rs.getString("nome"));
                     c.setTelefone(rs.getString("telefone"));
                     c.setEndereco(rs.getString("endereco"));
-                        CidadeDAO cit = new CidadeDAO();
+                        CidadeDAO cit = new CidadeDAO(conn);
                     c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
                     
                 cs.add(c);
@@ -146,7 +146,7 @@ public class ClienteDAO extends Conexao{
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEndereco(rs.getString("endereco"));
-                    CidadeDAO cit = new CidadeDAO();
+                    CidadeDAO cit = new CidadeDAO(conn);
                 c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
                 
             }
@@ -174,7 +174,7 @@ public class ClienteDAO extends Conexao{
                     c.setNome(rs.getString("nome"));
                     c.setTelefone(rs.getString("telefone"));
                     c.setEndereco(rs.getString("endereco"));
-                        CidadeDAO cit = new CidadeDAO();
+                        CidadeDAO cit = new CidadeDAO(conn);
                     c.setCidade(cit.leUmCidade(rs.getInt("cidades_id")));
                     
                 cs.add(c);

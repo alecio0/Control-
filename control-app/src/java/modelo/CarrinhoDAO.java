@@ -11,8 +11,8 @@ import java.util.List;
 public class CarrinhoDAO extends Conexao {
     private final Connection conn;
     
-    public CarrinhoDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public CarrinhoDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: adicionar :::
@@ -74,7 +74,7 @@ public class CarrinhoDAO extends Conexao {
             
             while (rs.next()) {
                 Carrinho cart = new Carrinho();
-                ProdutoDAO daop = new ProdutoDAO();
+                ProdutoDAO daop = new ProdutoDAO(conn);
                 cart.setId(rs.getInt("id"));
                 cart.setProduto(daop.leUmProduto(rs.getInt("produto")));
                 

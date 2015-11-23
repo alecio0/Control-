@@ -1,9 +1,11 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.Conexao;
 import modelo.Empresa;
 import modelo.EmpresaDAO;
 import modelo.Usuario;
@@ -20,17 +22,22 @@ public class Login implements Logica {
             u.setLogin(request.getParameter("login"));
             u.setSenha(request.getParameter("senha"));
         
-        UsuarioDAO dao = new UsuarioDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        UsuarioDAO dao = new UsuarioDAO(conn);
             u = dao.logar(u);
             String passa = "login.jsp";
             if (u != null) {
-                EmpresaDAO daoEmp = new EmpresaDAO();
+                
+                EmpresaDAO daoEmp = new EmpresaDAO(conn);
                 Empresa p = daoEmp.getEmpresa();
                 session.setAttribute("user", u);
                 session.setAttribute("emp", p);
                 passa = "index.jsp";
+                
             }
-            dao.desconectar();
+            
+        conn.close();
             
         return passa;
         

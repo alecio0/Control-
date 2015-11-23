@@ -1,12 +1,14 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.Carrinho;
 import modelo.CarrinhoDAO;
 import modelo.Cliente;
+import modelo.Conexao;
 import modelo.Produto;
 
 public class AdicionarProCart implements Logica{
@@ -26,10 +28,13 @@ public class AdicionarProCart implements Logica{
             Produto p = new Produto();
                 p.setId(Integer.parseInt(request.getParameter("idPro")));
             cart.setProduto(p);
-        
-            CarrinhoDAO dao = new CarrinhoDAO();
+            
+            Connection conn = new Conexao().trazConexao();
+            
+            CarrinhoDAO dao = new CarrinhoDAO(conn);
                 dao.addProCart(cart);
-                dao.desconectar();
+                
+            conn.close();
                 
             return "index.jsp";
             

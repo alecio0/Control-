@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.UsuarioDAO"%>
 <%@page import="modelo.Usuario"%>
@@ -7,7 +9,9 @@
 <content select="">
     <section>
         <div class="sela">
-            <%  UsuarioDAO dao = new UsuarioDAO();
+            <%  
+                Connection conn = new Conexao().trazConexao();
+                UsuarioDAO dao = new UsuarioDAO(conn);
                 List<Usuario> us = dao.listarUsuario();
                 if (us.size() > 0){
             %>
@@ -119,7 +123,7 @@
                     </div>
                 </form>
             </div>
-            <%  }  %>
+            <%  }   conn.close();   %>
         </div>
     </section>
     <aside>

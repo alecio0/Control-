@@ -1,11 +1,13 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cidade;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.Conexao;
 
 public class AdicionarCliente implements Logica {
 
@@ -24,13 +26,16 @@ public class AdicionarCliente implements Logica {
                     }
             c.setCidade(cit);
             
-        ClienteDAO dao = new ClienteDAO();
+        Connection conn = new Conexao().trazConexao();
+            
+        ClienteDAO dao = new ClienteDAO(conn);
         
         if (c.getCidade().getId() > 1) {
             
-                dao.addCliente(c);
-                c = dao.getLastCli();
-                dao.desconectar();
+            dao.addCliente(c);
+            c = dao.getLastCli();
+
+            conn.close();
 
             return "clientes.jsp#cli" + c.getId() ;
             
@@ -38,6 +43,8 @@ public class AdicionarCliente implements Logica {
             
             dao.addCliente(c);
             c = dao.getLastCli();
+            
+            conn.close();
             
             return "ControleServlet?logica=IniciarPedido&idCli=" + c.getId() ;
             

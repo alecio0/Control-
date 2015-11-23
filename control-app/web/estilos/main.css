@@ -437,6 +437,78 @@ content .sela .tab table a {
   text-decoration: none;
 }
 
+content .coluna {
+  flex-direction: column;
+}
+
+content .coluna .estatico {
+  margin-bottom: 10px;
+  transition: 2s all;
+}
+
+content .coluna .estatico table {
+  width: 384px;
+  margin: 0;
+}
+
+content .coluna .estatico table th {
+  text-align: left;
+}
+
+content .coluna .estatico table td {
+  text-align: right;
+}
+
+content .coluna .estatico table .th-head {
+  text-align: center;
+  border-top: 2px solid #412c5d;
+  background: #6e598a;
+}
+
+content .coluna .estatico table thead {
+  display: none;
+}
+
+content .coluna .estatico table tbody {
+  display: none;
+}
+
+content .coluna .estatico table tfoot {
+  display: none;
+}
+
+content .coluna .ativo {
+  margin-bottom: 10px;
+  transition: 2s all;
+}
+
+content .coluna .ativo table {
+  width: 384px;
+  margin: 0;
+}
+
+content .coluna .ativo table caption > div > a {
+  transform: rotate(180deg);
+}
+
+content .coluna .ativo table th {
+  text-align: left;
+}
+
+content .coluna .ativo table td {
+  text-align: right;
+}
+
+content .coluna .ativo table .th-head {
+  text-align: center;
+  border-top: 2px solid #412c5d;
+  background: #6e598a;
+}
+
+content .coluna .ativo table thead {
+  display: none;
+}
+
 content > aside {
   padding: 10px;
   display: flex;

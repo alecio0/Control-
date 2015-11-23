@@ -1,0 +1,71 @@
+include padroes/mix.jade
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Control+
+        link(rel="stylesheet", href="estilos/main.css")
+        link(rel="stylesheet", href="estilos/icomoon/style.css")
+        meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+        block testa
+    body
+        main
+            content
+                section
+                    .sela#section
+                        .tab.estatico#id1
+                            table#print
+                                thead
+                                    tr
+                                        th(colspan="4" class="th-head") Nome da Empresa
+                                    tr
+                                        th CNPJ:
+                                        td(colspan="3") 00000000/00000-00
+                                    tr
+                                        th Endereço:
+                                        td(colspan="3") QNO 4 Conjunto I casa 2 Ceilandia
+                                    tr
+                                        th Fone:
+                                        td(colspan="3") 4002 - 8922
+                                    tr
+                                        th Email:
+                                        td(colspan="3") mail@mail.com
+                                tbody
+                                    tr
+                                        th(colspan="4" class="th-head") Pedido
+                                    tr
+                                        th Data:
+                                        td 13/ 11/ 1045
+                                        th Vendedor:
+                                        td Fulano
+                                    tr
+                                        th Nome:
+                                        td Nome do Cliente
+                                    tr
+                                        th Endereco:
+                                        td QNG 30 casa 24
+                                        th Cidade:
+                                        td Taguatinga
+                                    tr
+                                        th Fone:
+                                        td 3245 - 3245
+                                    tr
+                                        th(colspan="4"  class="th-head") Produtos
+                                    tr
+                                        th id
+                                        th(colspan="2") nome
+                                        th p. unit
+                                    - for(x = 0; x < 4; x++)
+                                        tr
+                                            td 9
+                                            td(colspan="2") Xurisco Grande
+                                            td 10.00
+                                    tr
+                                        th(colspan="3" ) Taxa entrega
+                                        td 3.50
+                                    tr
+                                        th(colspan="3" ) Total
+                                        td 40.00
+                                    tr
+                                        th(colspan="4" class="th-head") Obrigado Pela Preferencia
+                                tfoot

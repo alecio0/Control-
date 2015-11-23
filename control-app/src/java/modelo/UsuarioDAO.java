@@ -11,8 +11,8 @@ import java.util.List;
 public class UsuarioDAO extends Conexao {
     private final Connection conn;
     
-    public UsuarioDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public UsuarioDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: adicionar :::

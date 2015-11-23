@@ -1,6 +1,7 @@
 
 package controle;
 
+import java.sql.Connection;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import modelo.Carrinho;
 import modelo.CarrinhoDAO;
 import modelo.Cliente;
+import modelo.Conexao;
 import modelo.Pedido;
 import modelo.PedidoDAO;
 import modelo.Usuario;
@@ -26,10 +28,12 @@ public class FinalizarPedido implements Logica {
             ped.setCliente(cli);
             ped.setUsuario((Usuario)session.getAttribute("user"));
         
-        PedidoDAO daoPed = new PedidoDAO();
+        Connection conn = new Conexao().trazConexao();
+            
+        PedidoDAO daoPed = new PedidoDAO(conn);
             daoPed.addPedido(ped);
         
-        CarrinhoDAO daoCar = new CarrinhoDAO();
+        CarrinhoDAO daoCar = new CarrinhoDAO(conn);
             List<Carrinho> cars = daoCar.listarProCart(cli);
             
             if (cars.size() > 0) {
@@ -41,14 +45,18 @@ public class FinalizarPedido implements Logica {
                     daoPed.addProPedido(ped);
                 }
                 
+                    Carrinho car = new Carrinho();
+                    car.setCliente(cli);
+                    daoCar.cancelarCart(car);
+                    
             } else {
                 
+                conn.close();
                 return "index.jsp";
                 
             }
         
-        daoCar.desconectar();
-        daoPed.desconectar();
+        conn.close();
         
         session.removeAttribute("cli");
         

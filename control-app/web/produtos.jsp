@@ -1,3 +1,6 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="modelo.Produto"%>
 <%@page import="modelo.ProdutoDAO"%>
 <%@page import="java.util.List"%>
@@ -9,7 +12,8 @@
     <section>
         <div class="sela">
             <div class="tab">
-                <%  TipoDAO daot = new TipoDAO();
+                <%  Connection conn = new Conexao().trazConexao();
+                    TipoDAO daot = new TipoDAO(conn);
                     List<Tipo> ts = daot.listarTipo();
                     for(Tipo t : ts) {
                 %>
@@ -22,7 +26,7 @@
                                 <a href="ControleServlet?logica=ExcluirTipo&id=<%=t.getId()%>" class="h-form" onclick="return checa()"><i class="icon-bin"></i> </a>
                             </div>
                         </caption>
-                    <%  ProdutoDAO daop = new ProdutoDAO();
+                    <%  ProdutoDAO daop = new ProdutoDAO(conn);
                         List<Produto> ps = daop.listarProdutoTipo(t.getId());
                         if(ps.size() > 0) {%>
                         <thead class="h-form">
@@ -148,7 +152,7 @@
                                 </div>
                             </div>
                         </form>
-                <%  }   %>
+                <%  }   conn.close();   %>
                     
                 </div>
             </div>

@@ -11,8 +11,8 @@ import java.util.List;
 public class PedidoDAO extends Conexao {
     private final Connection conn;
     
-    public PedidoDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public PedidoDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: adicionar :::
@@ -68,13 +68,13 @@ public class PedidoDAO extends Conexao {
                 p.setData(rs.getDate("data"));
                 p.setHora(rs.getTime("hora"));
                 
-                    ClienteDAO daoCli = new ClienteDAO();
+                    ClienteDAO daoCli = new ClienteDAO(conn);
                 p.setCliente(daoCli.leUmCliente(rs.getInt("clientes_id")));
                 
-                    UsuarioDAO daoUser = new UsuarioDAO();
+                    UsuarioDAO daoUser = new UsuarioDAO(conn);
                 p.setUsuario(daoUser.leUmUsuario(rs.getInt("usuarios_id")));
                 
-                    EmpresaDAO daoEmp = new EmpresaDAO();
+                    EmpresaDAO daoEmp = new EmpresaDAO(conn);
                 p.setEmpresa(daoEmp.getEmpresa());
             }
             ps.close();
@@ -103,13 +103,13 @@ public class PedidoDAO extends Conexao {
                 ped.setData(rs.getDate("data"));
                 ped.setHora(rs.getTime("hora"));
                 
-                    ClienteDAO daoCli = new ClienteDAO();
+                    ClienteDAO daoCli = new ClienteDAO(conn);
                 ped.setCliente(daoCli.leUmCliente(rs.getInt("clientes_id")));
                 
-                    UsuarioDAO daoUser = new UsuarioDAO();
+                    UsuarioDAO daoUser = new UsuarioDAO(conn);
                 ped.setUsuario(daoUser.leUmUsuario(rs.getInt("usuarios_id")));
                 
-                    EmpresaDAO daoEmp = new EmpresaDAO();
+                    EmpresaDAO daoEmp = new EmpresaDAO(conn);
                 ped.setEmpresa(daoEmp.getEmpresa());
                 
                 peds.add(ped);

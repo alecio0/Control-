@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="modelo.Cliente"%>
 <%@page import="modelo.ClienteDAO"%>
 <%@page import="modelo.Cidade"%>
@@ -8,10 +10,11 @@
     <section>
         <div class="sela">
             <div class="tab">
-        <%  try{
+        <%        Connection conn = new Conexao().trazConexao();
+            try{
                 int x = Integer.parseInt(request.getParameter("x"));
                 String pesqTel = request.getParameter("pesqTel");
-                ClienteDAO daoCliP = new ClienteDAO();
+                ClienteDAO daoCliP = new ClienteDAO(conn);
                 List<Cliente> clis = daoCliP.pesqCliente(pesqTel);
                 if(clis.size() > 0){%>
                 <table>
@@ -47,7 +50,7 @@
                 </table>
             <%  }   %>
             <%  } catch(Exception e){ %>
-            <%  ClienteDAO daoCli = new ClienteDAO();
+            <%  ClienteDAO daoCli = new ClienteDAO(conn);
                 List<Cliente> clis = daoCli.listarCliente();
                 if(clis.size() > 0){%>
                 <table>
@@ -109,7 +112,7 @@
                             </div>
                             <div class="input-group radio">
                                 <h3 class="h-form">Cidade / Bairro</h3>
-                            <%  CidadeDAO daoCit = new CidadeDAO();
+                            <%  CidadeDAO daoCit = new CidadeDAO(conn);
                                 List<Cidade> cits = daoCit.listarCidade();
                                 for(Cidade cit : cits){ %>
                                 <input type="radio" name="cidade" id="<%=cit.getNome()%>" value="<%=cit.getId()%>" <%   if(cit.getId() == idCit){  out.print("checked");   }   %>/>
@@ -141,7 +144,7 @@
                             </div>
                             <div class="input-group radio">
                                 <h3 class="h-form">Cidade / Bairro</h3>
-                            <%  CidadeDAO dao = new CidadeDAO();
+                            <%  CidadeDAO dao = new CidadeDAO(conn);
                                 List<Cidade> cs = dao.listarCidade();
                                 for(Cidade c : cs){ %>
                                 <input type="radio" name="cidade" id="<%=c.getNome()%>" value="<%=c.getId()%>"/>
@@ -154,7 +157,7 @@
                             </div>
                         </div>
                     </form>
-                <%  }   %>
+                <%  }   conn.close();   %>
                 </div>
                 <div class="wrap">
                     <form action="clientes.jsp" name="form_pesq_cli" class="formulario">

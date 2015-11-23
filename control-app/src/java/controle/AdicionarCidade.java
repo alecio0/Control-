@@ -1,10 +1,12 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cidade;
 import modelo.CidadeDAO;
+import modelo.Conexao;
 
 public class AdicionarCidade implements Logica{
 
@@ -15,9 +17,12 @@ public class AdicionarCidade implements Logica{
             c.setNome(request.getParameter("nome"));
             c.setTaxa(Double.parseDouble(request.getParameter("taxa")));
             
-        CidadeDAO dao = new CidadeDAO();
+        Connection conn = new Conexao().trazConexao();
+            
+        CidadeDAO dao = new CidadeDAO(conn);
             dao.addCidade(c);
-            dao.desconectar();
+            
+        conn.close();
         
         return "empresa.jsp";
         

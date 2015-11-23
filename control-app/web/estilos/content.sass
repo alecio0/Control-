@@ -39,7 +39,48 @@ content
                 a
                     display: block
                     text-decoration: none
-        
+    .coluna
+        flex-direction: column
+        .estatico
+            margin-bottom: 10px
+            transition: 2s all
+            table
+                width: 384px
+                margin: 0
+                caption
+
+                th
+                    text-align: left
+                td
+                    text-align: right
+                .th-head
+                    text-align: center
+                    border-top: 2px solid $bai
+                    background: $med-bai
+                thead
+                    display: none
+                tbody
+                    display: none
+                tfoot
+                    display: none
+        .ativo
+            margin-bottom: 10px
+            transition: 2s all
+            table
+                width: 384px
+                margin: 0
+                caption > div > a
+                    transform: rotate(180deg)
+                th
+                    text-align: left
+                td
+                    text-align: right
+                .th-head
+                    text-align: center
+                    border-top: 2px solid $bai
+                    background: $med-bai
+                thead
+                    display: none
     >aside
         padding: 10px
         display: flex

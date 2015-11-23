@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexao"%>
 <%@page import="modelo.Produto"%>
 <%@page import="modelo.ProdutoDAO"%>
 <%@page import="modelo.Tipo"%>
@@ -17,11 +19,12 @@
         <div class="sela">
             <div class="tab">
                 <%
-                    PedidoDAO daoPed = new PedidoDAO();
+                    Connection conn = new Conexao().trazConexao();
+                    PedidoDAO daoPed = new PedidoDAO(conn);
                     double total = daoPed.listarPedido().size();
-                    UsuarioDAO daoUser = new UsuarioDAO();
+                    UsuarioDAO daoUser = new UsuarioDAO(conn);
                     List<Usuario> us = daoUser.listarUsuario();
-                    if(us.size() > 1 ){ %>
+                    if(us.size() > 0 ){ %>
                 <div class="tab tab-graf">
                     <table>
                         <caption class="h-form">
@@ -47,9 +50,9 @@
                 </div>
                 <%  }   %>
                 <%
-                    CidadeDAO daoCit = new CidadeDAO();
+                    CidadeDAO daoCit = new CidadeDAO(conn);
                     List<Cidade> cits = daoCit.getCidade();
-                    if(cits.size() > 1 ){
+                    if(cits.size() > 0 ){
                     Pedido ped = new Pedido();  %>
                 <div class="tab tab-graf">
                     <table>
@@ -78,9 +81,9 @@
                 <%
                     double TotalTipo = daoPed.totalVendido().size();
                     double totalProduto = 0;
-                    TipoDAO daoT = new TipoDAO();
+                    TipoDAO daoT = new TipoDAO(conn);
                     List<Tipo> ts = daoT.listarTipo();
-                    if(ts.size() > 1 ){ %>
+                    if(ts.size() > 0 ){ %>
                 <div class="tab tab-graf">
                     <table>
                         <caption class="h-form">
@@ -106,14 +109,14 @@
                 </div>
                 <%  }   %>
                 <%
-                    if(ts.size() > 1 ){
+                    if(ts.size() > 0 ){
                         
                     for(Tipo t : ts) { 
-                    ProdutoDAO daoPro = new ProdutoDAO();
+                    ProdutoDAO daoPro = new ProdutoDAO(conn);
                     List<Produto> pros = daoPro.listarProdutoTipo(t.getId());
                     double tTipo = daoPed.TotalVendPorTipo(t).size();
                     
-                    if(pros.size() > 1){    %>
+                    if(pros.size() > 0){    %>
                 <div class="tab tab-graf">
                     <table>
                         <caption class="h-form">
@@ -134,7 +137,7 @@
                         </tbody>
                     </table>
                 </div>
-                <%  }}}   %>
+                <%  }}} conn.close();   %>
             </div>
         </div>
     </section>

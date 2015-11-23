@@ -1,8 +1,10 @@
 
 package controle;
 
+import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexao;
 import modelo.Tipo;
 import modelo.TipoDAO;
 
@@ -15,9 +17,12 @@ public class AlterarTipo implements Logica {
             t.setNome(request.getParameter("nome"));
             t.setId(Integer.parseInt(request.getParameter("id")));
         
-        TipoDAO dao = new TipoDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        TipoDAO dao = new TipoDAO(conn);
             dao.alterarTipo(t);
-            dao.desconectar();
+            
+        conn.close();
             
         return "produtos.jsp";
         

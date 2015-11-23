@@ -11,8 +11,8 @@ import java.util.List;
 public class TipoDAO extends Conexao {
     private final Connection conn;
     
-    public TipoDAO() throws ClassNotFoundException{
-        this.conn = new Conexao().trazConexao();
+    public TipoDAO(Connection conn) throws ClassNotFoundException{
+        this.conn = conn;
     }
     
     //::: adiciona :::

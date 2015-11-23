@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,12 +15,14 @@ public class Teste {
     
     public static void main(String[] args) throws ParseException, ClassNotFoundException, SQLException {
         
-        CidadeDAO daoCit = new CidadeDAO();
+        Connection conn = new Conexao().trazConexao();
+        
+        CidadeDAO daoCit = new CidadeDAO(conn);
         List<Cidade> cits = daoCit.getCidade();
         
         Pedido ped = new Pedido();
             
-        PedidoDAO dao = new PedidoDAO();
+        PedidoDAO dao = new PedidoDAO(conn);
         System.out.println(dao.listarPedido().size());
         int total = dao.listarPedido().size();
         
