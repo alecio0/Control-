@@ -60,7 +60,7 @@ public class FinalizarPedido implements Logica {
         
         session.removeAttribute("cli");
         
-        return "pedidos.jsp";
+        return "index.jsp";
         
     }
     

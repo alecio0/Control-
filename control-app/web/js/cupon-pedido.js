@@ -17,8 +17,9 @@ function ativo(x){
 
 }
 function cont(id){
-   tela_impressao = window.open('boleto.jsp?id='+id);
+   var conteudo = document.getElementById(id).innerHTML;
+   tela_impressao = window.open('about:blank');
+   tela_impressao.document.write(conteudo);
    tela_impressao.window.print();
-//   tela_impressao.window.close();
+   tela_impressao.window.close();
 }
-

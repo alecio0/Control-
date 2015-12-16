@@ -128,31 +128,4 @@ public class ProdutoDAO extends Conexao{
         
         return p;  
     }
-    
-    public List<Pedido> listarProdutoDoPedido(int id_ped) throws ClassNotFoundException{
-        try {
-            
-            List<Pedido> pros = new ArrayList<Pedido>();
-            PreparedStatement ps = this.conn.prepareStatement("SELECT * FROM pedidos_has_produtos where pedidos_id = ?");
-            ps.setInt(1, id_ped);
-            ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()) {
-                
-                Pedido p = new Pedido();
-                    p.setId(rs.getInt("produtos_id"));
-                        ProdutoDAO daoPro = new ProdutoDAO(conn);
-                    p.setProduto(daoPro.leUmProduto(rs.getInt("produtos_id")));
-                
-                pros.add(p);
-            }
-            rs.close();
-            ps.close();
-
-            return pros;
-            
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
